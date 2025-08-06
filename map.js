@@ -1748,8 +1748,8 @@ class CombinedMap extends HTMLElement {
         this.gMapLoaded = false;                       // check whether map is loaded from widget api key or by set api key method
         this.icons_id = null;
         this.icon_url_prefix = '';
-        this.gMap_present_marker = null; // Google Maps marker for the currently selected point.
-        this.osMap_present_marker = null; // Leaflet marker for the currently selected point.
+        this.gMap_present_marker = ''; // Google Maps marker for the currently selected point.
+        this.osMap_present_marker = ''; // Leaflet marker for the currently selected point.
         this.init();
     }
 
