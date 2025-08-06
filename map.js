@@ -25,7 +25,8 @@
     const google_mapsjs_api_key_in_js = ''; // Google Maps API key.
     const default_map_in_js = "osm";                           // default map to load  [2 possible values - 'google', 'osm' ]  
     const image_url_prefix = "https://plakatonline.eshamburg.de/ImageDBServer/ImageView.aspx?SDAW=";
-    const default_icon_url = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";    
+    const default_icon_url = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+    
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
             <style>
@@ -145,18 +146,18 @@
 
     `;
 
-class CombinedMapTest extends HTMLElement {
+class CombinedMap extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(tmpl.content.cloneNode(true));
         this.fe_osMap = null;                           // Leaflet map instance.
         this.fe_gMap = null;                            // Google Maps instance.
-        this.DB_MEASURE_ALIGNMENT = Object.create(null);// Object to store on all dimensions aligned measures.
+        this.DB_MEASURE_ALIGNMENT = Object.create(null); // Object to store all dimensions aligned measures.
+        this.DB_MARKER_DATA = Object.create(null);// Object to store on all marker points.
         this.DB_COORDINATE_DATA = Object.create(null);  // Array to store coordinate data.
         this.fe_gMap_markers = [];                      // Array to store Google Maps markers.
         this.fe_osMap_markers = [];                     // Array to store Leaflet markers.
-      //  this.dataSource = "";                           // Selected data source (sac or csv).
         this.mapType = 'google';                       // assigning  Current map type (google or osm) based on the toggle button. default checked google.
         this.gMap_markerCluster = null;                 // Google Maps Marker Clusterer instance.
         this.markerClustererLoaded = false;
@@ -187,16 +188,14 @@ class CombinedMapTest extends HTMLElement {
             {
                 // console.log("reached init inside google block");
                 await this.fe_init_gMap();
-                
             }
         } catch (error) {
             console.error("Error loading google dependencies:", error);
             return false;
         }
-
-        debugger;
         
         this.icon_url_prefix = location.origin;
+        this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_COORDINATE_DATA"));
         const mapTypeRadios = this.shadowRoot.querySelectorAll('input[name="rbg_mapType"]');
 
         //  Event Listener for the radio button
@@ -215,8 +214,7 @@ class CombinedMapTest extends HTMLElement {
             this.fe_set_view_loadingScreen_overlay();
             if(this.fe_gMap_markers.length === 0)
             {   
-                this.fe_set_view_gMap();
-                this.shadowRoot.querySelector("#loading-text").textContent = `Rendering ${Object.keys(this.DB_COORDINATE_DATA).length} datapoints into ${this.mapType} Maps...`;
+                this.shadowRoot.querySelector("#loading-text").textContent = `Rendering ${Object.keys(this.DB_COORDINATE_DATA).length} datapoints into ${this.mapType} maps...`;
                 this.fe_set_view_loadingScreen_overlay();
                 await this.fe_render_gMap();
                 this.fe_set_view_gMap();
@@ -231,8 +229,7 @@ class CombinedMapTest extends HTMLElement {
             this.fe_set_view_loadingScreen_overlay();
             if(this.fe_osMap_markers.length === 0)
                 {   
-                    this.fe_set_view_osMap();
-                    this.shadowRoot.querySelector("#loading-text").textContent = `Rendering ${Object.keys(this.DB_COORDINATE_DATA).length} datapoints into ${this.mapType} Maps...`;
+                    this.shadowRoot.querySelector("#loading-text").textContent = `Rendering ${Object.keys(this.DB_COORDINATE_DATA).length} datapoints into ${this.mapType} maps...`;
                     this.fe_set_view_loadingScreen_overlay();
                     await this.fe_render_osMap();
                     this.fe_set_view_osMap();
@@ -315,7 +312,7 @@ class CombinedMapTest extends HTMLElement {
             const mapInstance = this.fe_osMap;
             let item_idx = 0; // Keep in outer scope
 
-            // Define updatePopupContent once
+            // local function to update the popup Content. 
             const updatePopupContent = (marker_itemkey) => {
                 const marker_dataPoint = this.DB_COORDINATE_DATA[marker_itemkey];
                 const cur_lat = parseFloat(marker_dataPoint.SLATIT);
@@ -375,7 +372,7 @@ class CombinedMapTest extends HTMLElement {
             this.fe_osMap.addLayer(markerCluster);
             this.fe_osMap.fitBounds(bounds);
 
-            // Attach the popupopen handler once
+            // Attach the popupopen handler 
             this.fe_osMap.on('popupopen', (e) => {
                 if (e.popup.initDone) return;
                 e.popup.initDone = true;
@@ -460,7 +457,6 @@ class CombinedMapTest extends HTMLElement {
     
                     })
                     console.log("Gmap loaded");
-                    this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_COORDINATE_DATA")); 
                     ;
     
                     const clustererScript = document.createElement('script');
@@ -497,6 +493,7 @@ class CombinedMapTest extends HTMLElement {
             google.maps.event.trigger(this.fe_gMap, 'resize');
             let item_idx = 0; // Initialize item_idx for each marker
 
+            //Local fucntion to update the popup contents 
              const updateInfoWindow = (marker_itemkey) => {
                         let tableContent = this.fe_generateTableContent(marker_itemkey, item_idx);
                         infoWindow.setContent(tableContent);
@@ -539,7 +536,7 @@ class CombinedMapTest extends HTMLElement {
             Object.keys(this.DB_COORDINATE_DATA).forEach(itemkey => {
                 let dataPoint = this.DB_COORDINATE_DATA[itemkey];
                 const markerImg = document.createElement("img");
-                 let cleaned_sau_value = "";
+                let cleaned_sau_value = "";
                 const parts = dataPoint.items[0].SAUID.split('!');
                 if (parts.length > 1) {
                     cleaned_sau_value = parts[parts.length - 1]; 
@@ -622,97 +619,6 @@ class CombinedMapTest extends HTMLElement {
     });
 }
 
-    /** Sets the master coordinate data, handling both initial data loading and appending. */
-    async set_coordinate_master_data(SAC_COORDINATE_DATA,read_finish_flag,reset_data_flag) {
-        if (reset_data_flag === true) {
-            this.fe_set_view_loadingScreen_overlay();
-             this.shadowRoot.querySelector("#loading-text").textContent = `Inserting ${Object.keys(this.DB_MEASURE_ALIGNMENT).length} datapoints into ${this.mapType} Maps...`;
-            this.DB_MEASURE_ALIGNMENT = Object.create(null);
-            SAC_COORDINATE_DATA = sample_data;
-        }
-        SAC_COORDINATE_DATA.forEach(item => {
-            const key = `${item.SQID?.id}_${item.SLATIT?.id}_${item.SLONGD?.id}_${item.SOKZ?.id}_${item.SDAWN?.id}_${item.SWERBETID?.id}_${item.SDESCRIPT?.id}_${item.SAU?.description}_${item.SWARENG3?.description}_${item.SPPSW?.id}_${item.STAGPR?.id}`;
-           
-            if (this.DB_MEASURE_ALIGNMENT[key] === undefined) {
-              this.DB_MEASURE_ALIGNMENT[key] = Object.create(null);
-                this.DB_MEASURE_ALIGNMENT[key].SQID = item.SQID?.id;
-                this.DB_MEASURE_ALIGNMENT[key].SLATIT = item.SLATIT?.id;
-                this.DB_MEASURE_ALIGNMENT[key].SLONGD = item.SLONGD?.id;
-                this.DB_MEASURE_ALIGNMENT[key].SOKZ = item.SOKZ?.description;
-                this.DB_MEASURE_ALIGNMENT[key].SDAWN = item.SDAWN?.id;
-                this.DB_MEASURE_ALIGNMENT[key].SWERBETID = item.SWERBETID?.id
-                this.DB_MEASURE_ALIGNMENT[key].SDESCRIPT = item.SDESCRIPT?.id;
-                this.DB_MEASURE_ALIGNMENT[key].SAUID = item.SAU?.id;
-                this.DB_MEASURE_ALIGNMENT[key].SAU = item.SAU?.description;
-                this.DB_MEASURE_ALIGNMENT[key].SWARENG3 = item.SWARENG3?.description;
-                this.DB_MEASURE_ALIGNMENT[key].SPPSW = item.SPPSW?.id;
-                this.DB_MEASURE_ALIGNMENT[key].STAGPR = item.STAGPR?.id
-                this.DB_MEASURE_ALIGNMENT[key].NETTO3 = 0.0;
-                this.DB_MEASURE_ALIGNMENT[key].BRUTTOVM = 0.0;
-                this.DB_MEASURE_ALIGNMENT[key].AUSLASTUNG1 = 0.0;
-                this.DB_MEASURE_ALIGNMENT[key].AUSLASTUNG3 = 0.0;
-                
-                if ( item["@MeasureDimension"].id === "AARDEFXFG5H44AW9I0Y5JLH89" )
-                {
-                    this.DB_MEASURE_ALIGNMENT[key].NETTO3 = item["@MeasureDimension"].rawValue; 
-                }
-                if ( item["@MeasureDimension"].id === "AARDEFXFG5H44AYFXWM7G7I9T" )
-                {
-                    this.DB_MEASURE_ALIGNMENT[key].AUSLASTUNG1 = item["@MeasureDimension"].rawValue; 
-                }
-                if ( item["@MeasureDimension"].id === "1YI3PISYH11GEYJ46340IO3RO" )
-                {
-                    this.DB_MEASURE_ALIGNMENT[key].BRUTTOVM = item["@MeasureDimension"].rawValue; 
-                }
-                if ( item["@MeasureDimension"].id === "AARDEFXFG5H44AYFXWM7G7UWX" )
-                {
-                    this.DB_MEASURE_ALIGNMENT[key].AUSLASTUNG3 = item["@MeasureDimension"].rawValue; 
-                }
-            } else {
-                if ( item["@MeasureDimension"].id === "AARDEFXFG5H44AW9I0Y5JLH89" )
-                {
-                    this.DB_MEASURE_ALIGNMENT[key].NETTO3 = item["@MeasureDimension"].rawValue; 
-                }
-                if ( item["@MeasureDimension"].id === "AARDEFXFG5H44AYFXWM7G7I9T" )
-                {
-                    this.DB_MEASURE_ALIGNMENT[key].AUSLASTUNG1 = item["@MeasureDimension"].rawValue; 
-                }
-                if ( item["@MeasureDimension"].id === "1YI3PISYH11GEYJ46340IO3RO" )
-                {
-                    this.DB_MEASURE_ALIGNMENT[key].BRUTTOVM = item["@MeasureDimension"].rawValue; 
-                }
-                if ( item["@MeasureDimension"].id === "AARDEFXFG5H44AYFXWM7G7UWX" )
-                {
-                    this.DB_MEASURE_ALIGNMENT[key].AUSLASTUNG3 = item["@MeasureDimension"].rawValue; 
-                }
-            }
-          }, Object.create(null));
-
-        this.shadowRoot.querySelector("#loading-text").textContent = `Loaded ${Object.keys(this.DB_MEASURE_ALIGNMENT).length} datapoints from SAC...`;
-        if (read_finish_flag === true) {
-          this.shadowRoot.querySelector("#loading-text").textContent = `Inserting ${Object.keys(this.DB_MEASURE_ALIGNMENT).length} datapoints into ${this.mapType} Maps...`;
-          const DB_ROW_ALIGNMENT = Object.create(null);
-          Object.keys(this.DB_MEASURE_ALIGNMENT).forEach( itemkey => {
-                const item = this.DB_MEASURE_ALIGNMENT[itemkey];
-                const key = `${item.SQID}_${item.SLATIT}_${item.SLONGD}`;
-                if (DB_ROW_ALIGNMENT[key] === undefined) {
-                  DB_ROW_ALIGNMENT[key] = Object.create(null);
-                  DB_ROW_ALIGNMENT[key].SQID = item.SQID;
-                  DB_ROW_ALIGNMENT[key].SLATIT = item.SLATIT;
-                  DB_ROW_ALIGNMENT[key].SLONGD = item.SLONGD;
-                  DB_ROW_ALIGNMENT[key].items = [];
-                  DB_ROW_ALIGNMENT[key].items.push(item);
-                } else {
-                  DB_ROW_ALIGNMENT[key].items.push(item); // Add item to existing key
-                }
-          }, Object.create(null));
-          this.DB_COORDINATE_DATA = DB_ROW_ALIGNMENT;
-          this.fe_gMap_markers = [];
-          this.fe_osMap_markers = [];
-          this.renderMap();
-          this.DB_MEASURE_ALIGNMENT = Object.create(null);
-        }
-    }
 
     /** Sets the Google Maps JavaScript API key and initializes the Google Maps instance. */
     async set_google_mapsjs_api_key(api_key) {
@@ -809,8 +715,128 @@ class CombinedMapTest extends HTMLElement {
     }
 
     /** OSM dependency function end*/
+
+/** Below Code can be edited when there is change in data */
+
+  /** Sets the master coordinate data, handling both initial data loading and appending. */
+    async set_coordinate_master_data(SAC_COORDINATE_DATA,read_finish_flag,reset_data_flag) {
+        if (reset_data_flag === true) {
+            this.fe_set_view_loadingScreen_overlay();
+             this.shadowRoot.querySelector("#loading-text").textContent = `Inserting ${Object.keys(this.DB_MARKER_DATA).length} datapoints into ${this.mapType} maps...`;
+            this.DB_MARKER_DATA = Object.create(null);
+        }
+        SAC_COORDINATE_DATA.forEach(item => {
+            const key = `${item.SQID?.id}_${item.SLATIT?.id}_${item.SLONGD?.id}_${item.SDESCRIPT?.id}_${item.SAU?.description}_${item.SWARENG3?.description}`;
+           
+            if (this.DB_MARKER_DATA[key] === undefined) {
+              this.DB_MARKER_DATA[key] = Object.create(null);
+                this.DB_MARKER_DATA[key].SQID = item.SQID?.id;
+                this.DB_MARKER_DATA[key].SLATIT = item.SLATIT?.id;
+                this.DB_MARKER_DATA[key].SLONGD = item.SLONGD?.id;
+                this.DB_MARKER_DATA[key].SDESCRIPT = item.SDESCRIPT?.id;
+                this.DB_MARKER_DATA[key].SAUID = item.SAU?.id;
+                this.DB_MARKER_DATA[key].SAU = item.SAU?.description;
+                this.DB_MARKER_DATA[key].SWARENG3 = item.SWARENG3?.description;
+                
+            }
+          }, Object.create(null));
+
+        this.shadowRoot.querySelector("#loading-text").textContent = `Loaded ${Object.keys(this.DB_MARKER_DATA).length} datapoints from SAC...`;
+        if (read_finish_flag === true) {
+          this.shadowRoot.querySelector("#loading-text").textContent = `Inserting ${Object.keys(this.DB_MARKER_DATA).length} datapoints into ${this.mapType} maps...`;
+          this.DB_COORDINATE_DATA = this.DB_MARKER_DATA;
+          this.fe_gMap_markers = [];
+          this.fe_osMap_markers = [];
+          this.renderMap();
+          this.DB_MARKER_DATA = Object.create(null);
+        }
+    }
+
+    async set_coordinate_table_data(SAC_COORDINATE_TABLE_DATA) {
+
+        SAC_COORDINATE_TABLE_DATA.forEach(item => {
+            const key = `${item.SQID?.id}_${item.SLATIT?.id}_${item.SLONGD?.id}_${item.SOKZ?.id}_${item.SDAWN?.id}_${item.SWERBETID?.id}_${item.SDESCRIPT?.id}_${item.SAU?.description}_${item.SWARENG3?.description}_${item.SPPSW?.id}_${item.STAGPR?.id}`;
+           
+            if (this.DB_MEASURE_ALIGNMENT[key] === undefined) {
+              this.DB_MEASURE_ALIGNMENT[key] = Object.create(null);
+                this.DB_MEASURE_ALIGNMENT[key].SQID = item.SQID?.id;
+                this.DB_MEASURE_ALIGNMENT[key].SLATIT = item.SLATIT?.id;
+                this.DB_MEASURE_ALIGNMENT[key].SLONGD = item.SLONGD?.id;
+                this.DB_MEASURE_ALIGNMENT[key].SOKZ = item.SOKZ?.description;
+                this.DB_MEASURE_ALIGNMENT[key].SDAWN = item.SDAWN?.id;
+                this.DB_MEASURE_ALIGNMENT[key].SWERBETID = item.SWERBETID?.id
+                this.DB_MEASURE_ALIGNMENT[key].SDESCRIPT = item.SDESCRIPT?.id;
+                this.DB_MEASURE_ALIGNMENT[key].SAUID = item.SAU?.id;
+                this.DB_MEASURE_ALIGNMENT[key].SAU = item.SAU?.description;
+                this.DB_MEASURE_ALIGNMENT[key].SWARENG3 = item.SWARENG3?.description;
+                this.DB_MEASURE_ALIGNMENT[key].SPPSW = item.SPPSW?.id;
+                this.DB_MEASURE_ALIGNMENT[key].STAGPR = item.STAGPR?.id
+                this.DB_MEASURE_ALIGNMENT[key].NETTO3 = 0.0;
+                this.DB_MEASURE_ALIGNMENT[key].BRUTTOVM = 0.0;
+                this.DB_MEASURE_ALIGNMENT[key].AUSLASTUNG1 = 0.0;
+                this.DB_MEASURE_ALIGNMENT[key].AUSLASTUNG3 = 0.0;
+                
+                if ( item["@MeasureDimension"].id === "AARDEFXFG5H44AW9I0Y5JLH89" )
+                {
+                    this.DB_MEASURE_ALIGNMENT[key].NETTO3 = item["@MeasureDimension"].rawValue; 
+                }
+                if ( item["@MeasureDimension"].id === "AARDEFXFG5H44AYFXWM7G7I9T" )
+                {
+                    this.DB_MEASURE_ALIGNMENT[key].AUSLASTUNG1 = item["@MeasureDimension"].rawValue; 
+                }
+                if ( item["@MeasureDimension"].id === "1YI3PISYH11GEYJ46340IO3RO" )
+                {
+                    this.DB_MEASURE_ALIGNMENT[key].BRUTTOVM = item["@MeasureDimension"].rawValue; 
+                }
+                if ( item["@MeasureDimension"].id === "AARDEFXFG5H44AYFXWM7G7UWX" )
+                {
+                    this.DB_MEASURE_ALIGNMENT[key].AUSLASTUNG3 = item["@MeasureDimension"].rawValue; 
+                }
+            } else {
+                if ( item["@MeasureDimension"].id === "AARDEFXFG5H44AW9I0Y5JLH89" )
+                {
+                    this.DB_MEASURE_ALIGNMENT[key].NETTO3 = item["@MeasureDimension"].rawValue; 
+                }
+                if ( item["@MeasureDimension"].id === "AARDEFXFG5H44AYFXWM7G7I9T" )
+                {
+                    this.DB_MEASURE_ALIGNMENT[key].AUSLASTUNG1 = item["@MeasureDimension"].rawValue; 
+                }
+                if ( item["@MeasureDimension"].id === "1YI3PISYH11GEYJ46340IO3RO" )
+                {
+                    this.DB_MEASURE_ALIGNMENT[key].BRUTTOVM = item["@MeasureDimension"].rawValue; 
+                }
+                if ( item["@MeasureDimension"].id === "AARDEFXFG5H44AYFXWM7G7UWX" )
+                {
+                    this.DB_MEASURE_ALIGNMENT[key].AUSLASTUNG3 = item["@MeasureDimension"].rawValue; 
+                }
+            }
+        }, Object.create(null));
+
+        
+
+          const DB_ROW_ALIGNMENT = Object.create(null);
+          Object.keys(this.DB_MEASURE_ALIGNMENT).forEach( itemkey => {
+                const item = this.DB_MEASURE_ALIGNMENT[itemkey];
+                const key = `${item.SQID}_${item.SLATIT}_${item.SLONGD}`;
+                if (DB_ROW_ALIGNMENT[key] === undefined) {
+                  DB_ROW_ALIGNMENT[key] = Object.create(null);
+                  DB_ROW_ALIGNMENT[key].SQID = item.SQID;
+                  DB_ROW_ALIGNMENT[key].SLATIT = item.SLATIT;
+                  DB_ROW_ALIGNMENT[key].SLONGD = item.SLONGD;
+                  DB_ROW_ALIGNMENT[key].items = [];
+                  DB_ROW_ALIGNMENT[key].items.push(item);
+                } else {
+                  DB_ROW_ALIGNMENT[key].items.push(item); // Add item to existing key
+                }
+          }, Object.create(null));
+          this.DB_COORDINATE_TABLE_DATA = DB_ROW_ALIGNMENT;
+          this.DB_MEASURE_ALIGNMENT = Object.create(null);
+    
+    }
     
 
+
+/** Below code represents the Table structure for the popup content. This can be edited based on requirement */
     // Table content generator
     fe_generateTableContent(itemkey,idx) {
         let dataPoint = this.DB_COORDINATE_DATA[itemkey];
@@ -884,12 +910,8 @@ class CombinedMapTest extends HTMLElement {
         </table>
         ${navButtons}
     `;
-    }
-                
-                
-                
-    
+    }  
 }
 
-customElements.define('custom-maps-test', CombinedMapTest);
+customElements.define('com_contigo-consulting_sacmapswidget_developement', CombinedMap);
 })();
