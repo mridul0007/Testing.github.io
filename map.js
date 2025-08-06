@@ -913,5 +913,5 @@ class CombinedMap extends HTMLElement {
     }  
 }
 
-customElements.define('com_contigo-consulting_sacmapswidget_developement', CombinedMap);
+customElements.define('custom-mapsnew-test', CombinedMap);
 })();
