@@ -1,12 +1,12 @@
 {
-	"name": "MAPS_TEST",
+	"name": "MAPS_TEST_NEW",
 	"imports": ["datasource"],
-	"description": "SAC Test Maps",
-	"newInstancePrefix": "MAPS_TEST",
+	"description": "SAC Test Maps New",
+	"newInstancePrefix": "MAPS_TEST_NEW",
 	"eula": "",
 	"vendor": "Contigo Consulting AG - MKoshy, JBuergmayr",
 	"license": "",
-	"id": "MAPS_TEST",
+	"id": "MAPS_TEST_NEW",
 	"version": "1.0.3",
 	"icon": "",
 	"webcomponents": [
