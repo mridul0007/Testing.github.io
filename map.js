@@ -2078,44 +2078,44 @@ class CombinedMap extends HTMLElement {
             google.maps.event.trigger(this.fe_gMap, 'resize');
             let item_idx = 0; // Initialize item_idx for each marker
 
-            //Local fucntion to update the popup contents 
-             const updateInfoWindow = (marker_itemkey) => {
-                        let tableContent = this.fe_generateTableContent(marker_itemkey, item_idx);
-                        infoWindow.setContent(tableContent);
-                        google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
-                           // console.log("reached domready");
-                            setTimeout(() => {
-                            const navContainer = this.shadowRoot.querySelector(`#${this.mapType}-nav-buttons`);
-                                if (navContainer) {
-                            const itemCounter =  navContainer.querySelector("#itemCounter");
-                            const nextBtn =  navContainer.querySelector("#nextItem"); 
-                            const prevBtn =  navContainer.querySelector("#prevItem");
-                            if (nextBtn) {
-                              //  console.log("DEBUG: 'nextItem' button found.");
-                                nextBtn.addEventListener("click", () => {
-                                 //   console.log("Next button clicked");
-                                    if (item_idx < this.DB_COORDINATE_DATA[marker_itemkey].items.length - 1) {
-                                        item_idx++;
-                                        itemCounter.textContent = `${item_idx + 1} / ${this.DB_COORDINATE_DATA[marker_itemkey].items.length}`;
-                                        updateInfoWindow(marker_itemkey); // Call helper to update content and re-attach
-                                    }
-                                });
-                            }
-                            if (prevBtn) {
-                              //  console.log("DEBUG: 'prev' button found.");
-                                prevBtn.addEventListener("click", () => {
-                                 //   console.log("Previous button clicked");
-                                    if (item_idx > 0) {
-                                        item_idx--;
-                                        itemCounter.textContent = `${item_idx + 1} / ${this.DB_COORDINATE_DATA[marker_itemkey].items.length}`;
-                                        updateInfoWindow(marker_itemkey); // Call helper to update content and re-attach
-                                    }
-                                });
-                            }
-                                }
-                        },50);
-                        });
-                    };
+            // //Local fucntion to update the popup contents 
+            //  const updateInfoWindow = (marker_itemkey) => {
+            //             let tableContent = this.fe_generateTableContent(marker_itemkey, item_idx);
+            //             infoWindow.setContent(tableContent);
+            //             google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
+            //                // console.log("reached domready");
+            //                 setTimeout(() => {
+            //                 const navContainer = this.shadowRoot.querySelector(`#${this.mapType}-nav-buttons`);
+            //                     if (navContainer) {
+            //                 const itemCounter =  navContainer.querySelector("#itemCounter");
+            //                 const nextBtn =  navContainer.querySelector("#nextItem"); 
+            //                 const prevBtn =  navContainer.querySelector("#prevItem");
+            //                 if (nextBtn) {
+            //                   //  console.log("DEBUG: 'nextItem' button found.");
+            //                     nextBtn.addEventListener("click", () => {
+            //                      //   console.log("Next button clicked");
+            //                         if (item_idx < this.DB_COORDINATE_DATA[marker_itemkey].items.length - 1) {
+            //                             item_idx++;
+            //                             itemCounter.textContent = `${item_idx + 1} / ${this.DB_COORDINATE_DATA[marker_itemkey].items.length}`;
+            //                             updateInfoWindow(marker_itemkey); // Call helper to update content and re-attach
+            //                         }
+            //                     });
+            //                 }
+            //                 if (prevBtn) {
+            //                   //  console.log("DEBUG: 'prev' button found.");
+            //                     prevBtn.addEventListener("click", () => {
+            //                      //   console.log("Previous button clicked");
+            //                         if (item_idx > 0) {
+            //                             item_idx--;
+            //                             itemCounter.textContent = `${item_idx + 1} / ${this.DB_COORDINATE_DATA[marker_itemkey].items.length}`;
+            //                             updateInfoWindow(marker_itemkey); // Call helper to update content and re-attach
+            //                         }
+            //                     });
+            //                 }
+            //                     }
+            //             },50);
+            //             });
+            //         };
 
 
             Object.keys(this.DB_COORDINATE_DATA).forEach(itemkey => {
@@ -2155,13 +2155,14 @@ class CombinedMap extends HTMLElement {
                     this.fe_gMap_markers.push(marker);
                     marker.addListener('gmp-click', (event) => {  
                         debugger;
-                        this.gMap_present_marker.marker = marker; // Store the clicked marker
-                        this.gMap_present_marker.itemkey = itemkey; // Store the item key for the
+                        
                         if (infoWindow) {
                             infoWindow.close();
                         } else {
                             infoWindow = new google.maps.InfoWindow();
                         }
+                        this.gMap_present_marker.infoWindow = infoWindow; // Store the clicked marker infoWindow
+                        this.gMap_present_marker.itemkey = itemkey; // Store the item key for the clicked marker
                         item_idx = 0; // Reset index when a new marker is clicked
                         this.fe_gMap.setZoom(20);
                         this.fe_gMap.setCenter(position);
@@ -2421,8 +2422,48 @@ class CombinedMap extends HTMLElement {
           }, Object.create(null));
           this.DB_COORDINATE_TABLE_DATA = DB_ROW_ALIGNMENT;
           this.DB_MEASURE_ALIGNMENT = Object.create(null);
-          this.fe_generateTableContent(this.gMap_present_marker.itemkey,0);
+          this.gMap_updateInfoWindow(this.gMap_present_marker.itemkey,0);
     }
+
+
+
+    gMap_updateInfoWindow(marker_itemkey,item_idx) {
+            let tableContent = this.fe_generateTableContent(marker_itemkey, item_idx);
+            infoWindow.setContent(tableContent);
+            google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
+                // console.log("reached domready");
+                setTimeout(() => {
+                const navContainer = this.shadowRoot.querySelector(`#${this.mapType}-nav-buttons`);
+                    if (navContainer) {
+                const itemCounter =  navContainer.querySelector("#itemCounter");
+                const nextBtn =  navContainer.querySelector("#nextItem"); 
+                const prevBtn =  navContainer.querySelector("#prevItem");
+                if (nextBtn) {
+                    //  console.log("DEBUG: 'nextItem' button found.");
+                    nextBtn.addEventListener("click", () => {
+                        //   console.log("Next button clicked");
+                        if (item_idx < this.DB_COORDINATE_DATA[marker_itemkey].items.length - 1) {
+                            item_idx++;
+                            itemCounter.textContent = `${item_idx + 1} / ${this.DB_COORDINATE_DATA[marker_itemkey].items.length}`;
+                            updateInfoWindow(marker_itemkey); // Call helper to update content and re-attach
+                        }
+                    });
+                }
+                if (prevBtn) {
+                    //  console.log("DEBUG: 'prev' button found.");
+                    prevBtn.addEventListener("click", () => {
+                        //   console.log("Previous button clicked");
+                        if (item_idx > 0) {
+                            item_idx--;
+                            itemCounter.textContent = `${item_idx + 1} / ${this.DB_COORDINATE_DATA[marker_itemkey].items.length}`;
+                            updateInfoWindow(marker_itemkey); // Call helper to update content and re-attach
+                        }
+                    });
+                }
+                    }
+            },50);
+            });
+        };
     
 
 
