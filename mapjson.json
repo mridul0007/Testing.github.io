@@ -1,0 +1,100 @@
+{
+	"name": "SAC Maps Combined",
+	"imports": ["planning-model","datasource"],
+	"description": "SAC Maps Combined",
+	"newInstancePrefix": "sac_maps_combined",
+	"eula": "",
+	"vendor": "Contigo Consulting AG - MKoshy, JBuergmayr",
+	"license": "",
+	"id": "sac_maps_combined",
+	"version": "1.0.6",
+	"icon": "",
+	"webcomponents": [
+		{
+			"kind": "main",
+			"tag": "com-example-maps",
+			"url": "https://mridul0007.github.io/MapsWidget/maps.js", 
+			"integrity": ""	,
+			"ignoreIntegrity": true
+			
+		}		
+	],
+	"properties": {
+		"google_mapsjs_api_key": {
+			"type": "string"
+		},
+		"coordinate_master_data": {
+			"type": "PlanningModelMember[]"
+		},
+		"coordinate_master_data_sel": {
+			"type": "ResultSet[]"
+		},
+        "default_map": {
+			"type": "string"
+		},
+		"read_finish": {
+			"type": "string"
+		}
+	},
+	"methods": {
+		"set_google_mapsjs_api_key": {
+			"description": "set google maps js api key",
+            "parameters": [
+				{
+					"name": "google_mapsjs_api_key",
+					"type": "string",
+					"description": "google maps js api key"
+				}]
+			},
+        "set_default_map": {
+			"description": "set default map",
+            "parameters": [
+				{
+					"name": "default_map",
+					"type": "string",
+					"description": "set default map"
+				}]
+			},    
+		"set_coordinate_master_data":{
+			"description": "set coordinate master data",
+			"parameters": [
+				{
+					"name": "coordinate_master_data",
+					"type": "PlanningModelMember[]",
+					"description": "coordinate master data"
+				},
+				{
+					"name": "read_finish",
+					"type": "string",
+					"description": "flag for read coordinate master data "
+				}
+			]
+		},
+		"set_coordinate_master_data2"{
+			"description": "set coordinate master data",
+			"parameters": [
+				{
+					"name": "coordinate_master_data_sel",
+					"type": "ResultSet[]",
+					"description": "coordinate master data selection"
+				},
+				{
+					"name": "read_finish",
+					"type": "string",
+					"description": "flag for read coordinate master data "
+				},
+				{
+					"name": "read_new",
+					"type": "boolean",
+					"description": "flag for read coordinate master data "
+
+				}
+			]
+		}
+	},
+	"events": {
+		"EVENTW2S_DB_FILL_COORDINATE_DATA": {
+			"description": "read coordinate master data"
+		}
+	}
+}
