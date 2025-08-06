@@ -1968,11 +1968,11 @@ class CombinedMap extends HTMLElement {
                 let dataPoint = this.DB_COORDINATE_DATA[itemkey];
                 const markerImg = document.createElement("img");
                 let cleaned_sau_value = "";
-                const parts = dataPoint.items[0].SAUID.split('!');
+                const parts = dataPoint.SAUID.split('!');
                 if (parts.length > 1) {
                     cleaned_sau_value = parts[parts.length - 1]; 
                 } else {
-                    cleaned_sau_value = dataPoint.items[0].SAU; 
+                    cleaned_sau_value = dataPoint.SAU; 
                 }
                 let lookupKey = ("SMWI_" + cleaned_sau_value).toUpperCase();
                 let iconUrl = "";
@@ -1995,7 +1995,7 @@ class CombinedMap extends HTMLElement {
                         map: this.fe_gMap,
                         position,
                         content: markerImg,
-                        title: dataPoint.items[0].SDESCRIPT,
+                        title: dataPoint.SDESCRIPT,
                     });
 
                     this.fe_gMap_markers.push(marker);
