@@ -2161,7 +2161,6 @@ class CombinedMap extends HTMLElement {
                         } else {
                             infoWindow = new google.maps.InfoWindow();
                         }
-                        this.gMap_present_marker.infoWindow = infoWindow; // Store the clicked marker infoWindow
                         this.gMap_present_marker.itemkey = itemkey; // Store the item key for the clicked marker
                         item_idx = 0; // Reset index when a new marker is clicked
                         this.fe_gMap.setZoom(20);
