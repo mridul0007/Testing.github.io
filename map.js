@@ -8,6 +8,280 @@
 
 (function () {
 
+   const sampledata = [
+    {
+        "@MeasureDimension": {
+            "id": "AARDEFXFG5H44AW9I0Y5JLH89",
+            "description": "Netto 3",
+            "rawValue": "0",
+            "formattedValue": "0,00"
+        },
+        "SQID": {
+            "id": "0000000167198",
+            "description": "167198",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.9383681",
+            "description": "50.9383681",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "6.82974358",
+            "description": "6.82974358",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "00000000000",
+            "description": "Nicht zugeordnet",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "AACHENER STR. 1260",
+            "description": "AACHENER STR. 1260",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!PLAKATUNION",
+            "description": "Plakatunion",
+            "properties": {
+                "SAU.LONG_TEXT": "Plakatunion",
+                "SAU.ID": "6-"
+            }
+        },
+        "SWARENG3": {
+            "id": "",
+            "description": "Nicht zugeordnet",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Nicht zugeordnet"
+            }
+        },
+        "SPPSW": {
+            "id": "0000079697",
+            "description": "79697",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "44.2",
+            "description": "44.2",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "2220071339385",
+            "description": "2220071339385",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "1YI3PISYH11GEYJ46340IO3RO",
+            "description": "Brutto VM",
+            "rawValue": "0",
+            "formattedValue": "0,00"
+        },
+        "SQID": {
+            "id": "0000000167198",
+            "description": "167198",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.9383681",
+            "description": "50.9383681",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "6.82974358",
+            "description": "6.82974358",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "00000000000",
+            "description": "Nicht zugeordnet",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "AACHENER STR. 1260",
+            "description": "AACHENER STR. 1260",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!PLAKATUNION",
+            "description": "Plakatunion",
+            "properties": {
+                "SAU.LONG_TEXT": "Plakatunion",
+                "SAU.ID": "6-"
+            }
+        },
+        "SWARENG3": {
+            "id": "",
+            "description": "Nicht zugeordnet",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Nicht zugeordnet"
+            }
+        },
+        "SPPSW": {
+            "id": "0000079697",
+            "description": "79697",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "44.2",
+            "description": "44.2",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "2220071339385",
+            "description": "2220071339385",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "AARDEFXFG5H44AW9I0Y5JLH89",
+            "description": "Netto 3",
+            "rawValue": "0",
+            "formattedValue": "0,00"
+        },
+        "SQID": {
+            "id": "0000000167198",
+            "description": "167198",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.9383681",
+            "description": "50.9383681",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "6.82974358",
+            "description": "6.82974358",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "00000000000",
+            "description": "Nicht zugeordnet",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "AACHENER STR. 1260",
+            "description": "AACHENER STR. 1260",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!PLAKATUNION",
+            "description": "Plakatunion",
+            "properties": {
+                "SAU.LONG_TEXT": "Plakatunion",
+                "SAU.ID": "6-"
+            }
+        },
+        "SWARENG3": {
+            "id": "",
+            "description": "Nicht zugeordnet",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Nicht zugeordnet"
+            }
+        },
+        "SPPSW": {
+            "id": "0000079697",
+            "description": "79697",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "45.2",
+            "description": "45.2",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "2220071339385",
+            "description": "2220071339385",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "1YI3PISYH11GEYJ46340IO3RO",
+            "description": "Brutto VM",
+            "rawValue": "0",
+            "formattedValue": "0,00"
+        },
+        "SQID": {
+            "id": "0000000167198",
+            "description": "167198",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.9383681",
+            "description": "50.9383681",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "6.82974358",
+            "description": "6.82974358",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "00000000000",
+            "description": "Nicht zugeordnet",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "AACHENER STR. 1260",
+            "description": "AACHENER STR. 1260",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!PLAKATUNION",
+            "description": "Plakatunion",
+            "properties": {
+                "SAU.LONG_TEXT": "Plakatunion",
+                "SAU.ID": "6-"
+            }
+        },
+        "SWARENG3": {
+            "id": "",
+            "description": "Nicht zugeordnet",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Nicht zugeordnet"
+            }
+        },
+        "SPPSW": {
+            "id": "0000079697",
+            "description": "79697",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "45.2",
+            "description": "45.2",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "2220071339385",
+            "description": "2220071339385",
+            "properties": {}
+        }
+    }]
+
     // Constants for loading Leaflet CSS and JavaScript libraries.
     const osMap_loadLeafletCSS_href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
     const osMap_loadLeafletCSS_integrity =   'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
@@ -725,6 +999,7 @@ class CombinedMap extends HTMLElement {
             this.fe_set_view_loadingScreen_overlay();
              this.shadowRoot.querySelector("#loading-text").textContent = `Inserting ${Object.keys(this.DB_MARKER_DATA).length} datapoints into ${this.mapType} maps...`;
             this.DB_MARKER_DATA = Object.create(null);
+            SAC_COORDINATE_DATA = sampledata;
         }
         SAC_COORDINATE_DATA.forEach(item => {
             const key = `${item.SQID?.id}_${item.SLATIT?.id}_${item.SLONGD?.id}_${item.SDESCRIPT?.id}_${item.SAU?.description}_${item.SWARENG3?.description}`;
@@ -754,7 +1029,7 @@ class CombinedMap extends HTMLElement {
     }
 
     async set_coordinate_table_data(SAC_COORDINATE_TABLE_DATA) {
-
+        SAC_COORDINATE_TABLE_DATA = sampledata;
         SAC_COORDINATE_TABLE_DATA.forEach(item => {
             const key = `${item.SQID?.id}_${item.SLATIT?.id}_${item.SLONGD?.id}_${item.SOKZ?.id}_${item.SDAWN?.id}_${item.SWERBETID?.id}_${item.SDESCRIPT?.id}_${item.SAU?.description}_${item.SWARENG3?.description}_${item.SPPSW?.id}_${item.STAGPR?.id}`;
            
