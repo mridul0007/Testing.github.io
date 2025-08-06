@@ -1750,6 +1750,7 @@ class CombinedMap extends HTMLElement {
         this.icon_url_prefix = '';
         this.gMap_present_marker = ''; // Google Maps marker for the currently selected point.
         this.osMap_present_marker = ''; // Leaflet marker for the currently selected point.
+        this.infoWindow = null;
         this.init();
     }
 
@@ -2072,8 +2073,6 @@ class CombinedMap extends HTMLElement {
                 this.fe_gMap_markers.forEach(marker => marker.setMap(null));
                 this.fe_gMap_markers = [];
             }
-
-            let infoWindow = null;
             const bounds = new google.maps.LatLngBounds();
             google.maps.event.trigger(this.fe_gMap, 'resize');
             let item_idx = 0; // Initialize item_idx for each marker
@@ -2156,24 +2155,24 @@ class CombinedMap extends HTMLElement {
                     marker.addListener('gmp-click', (event) => {  
                         debugger;
                         
-                        if (infoWindow) {
-                            infoWindow.close();
+                        if (this.infoWindow) {
+                            this.infoWindow.close();
                         } else {
-                            infoWindow = new google.maps.InfoWindow();
+                            this.infoWindow = new google.maps.InfoWindow();
                         }
                         this.gMap_present_marker = itemkey; // Store the item key for the clicked marker
                         item_idx = 0; // Reset index when a new marker is clicked
                         this.fe_gMap.setZoom(20);
                         this.fe_gMap.setCenter(position);
-                        infoWindow.setContent(loading_tableContent);
+                        this.infoWindow.setContent(loading_tableContent);
                         this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_TABLE_DATA"));
                         // updateInfoWindow(marker_itemkey); // Initial call to display content and attach listeners
-                        if (infoWindow && this.fe_gMap && marker) {
-                            infoWindow.open(this.fe_gMap, marker);
+                        if (this.infoWindow && this.fe_gMap && marker) {
+                            this.infoWindow.open(this.fe_gMap, marker);
                         //    console.log("InfoWindow should be opening.");
                         } else {
                             console.error("InfoWindow.open() failed: infoWindow, map, or marker is null/undefined.");
-                            console.error("InfoWindow:", infoWindow, "Map:", this.fe_gMap, "Marker:", marker);
+                            console.error("InfoWindow:", this.infoWindow, "Map:", this.fe_gMap, "Marker:", marker);
                         }
                     });
                 }
@@ -2432,8 +2431,8 @@ class CombinedMap extends HTMLElement {
 
     gMap_updateInfoWindow(marker_itemkey,item_idx) {
             let tableContent = this.fe_generateTableContent(marker_itemkey, item_idx);
-            infoWindow.setContent(tableContent);
-            google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
+            this.infoWindow.setContent(tableContent);
+            google.maps.event.addListenerOnce(this.infoWindow, 'domready', () => {
                 // console.log("reached domready");
                 setTimeout(() => {
                 const navContainer = this.shadowRoot.querySelector(`#${this.mapType}-nav-buttons`);
