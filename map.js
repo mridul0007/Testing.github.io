@@ -456,6 +456,7 @@ class CombinedMap extends HTMLElement {
                         mapId: 'f61d67e24706f841'
     
                     })
+                    this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_COORDINATE_DATA"));
                     console.log("Gmap loaded");
                     ;
     
@@ -712,7 +713,6 @@ class CombinedMap extends HTMLElement {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(this.fe_osMap);
         this.fe_set_view_loadingScreen_overlay();
-        this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_COORDINATE_DATA"));
     }
 
     /** OSM dependency function end*/
