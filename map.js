@@ -8,6 +8,144 @@
 
 (function () {
 
+    const tabledata = [
+    {
+        "@MeasureDimension": {
+            "id": "AARDEFXFG5H44AW9I0Y5JLH89",
+            "description": "Netto 3",
+            "rawValue": "0",
+            "formattedValue": "0,00"
+        },
+        "SQID": {
+            "id": "0000000167198",
+            "description": "167198",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.9383681",
+            "description": "50.9383681",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "6.82974358",
+            "description": "6.82974358",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "00000000000",
+            "description": "Nicht zugeordnet",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "AACHENER STR. 1260",
+            "description": "AACHENER STR. 1260",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!PLAKATUNION",
+            "description": "Plakatunion",
+            "properties": {
+                "SAU.LONG_TEXT": "Plakatunion",
+                "SAU.ID": "6-"
+            }
+        },
+        "SWARENG3": {
+            "id": "",
+            "description": "Nicht zugeordnet",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Nicht zugeordnet"
+            }
+        },
+        "SPPSW": {
+            "id": "0000079697",
+            "description": "79697",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "44.2",
+            "description": "44.2",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "2220071339385",
+            "description": "2220071339385",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "1YI3PISYH11GEYJ46340IO3RO",
+            "description": "Brutto VM",
+            "rawValue": "0",
+            "formattedValue": "0,00"
+        },
+        "SQID": {
+            "id": "0000000167198",
+            "description": "167198",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.9383681",
+            "description": "50.9383681",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "6.82974358",
+            "description": "6.82974358",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "00000000000",
+            "description": "Nicht zugeordnet",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "AACHENER STR. 1260",
+            "description": "AACHENER STR. 1260",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!PLAKATUNION",
+            "description": "Plakatunion",
+            "properties": {
+                "SAU.LONG_TEXT": "Plakatunion",
+                "SAU.ID": "6-"
+            }
+        },
+        "SWARENG3": {
+            "id": "",
+            "description": "Nicht zugeordnet",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Nicht zugeordnet"
+            }
+        },
+        "SPPSW": {
+            "id": "0000079697",
+            "description": "79697",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "44.2",
+            "description": "44.2",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "2220071339385",
+            "description": "2220071339385",
+            "properties": {}
+        }
+    }]
+
    const sampledata = [
     {
         "@MeasureDimension": {
@@ -2009,14 +2147,15 @@ class CombinedMap extends HTMLElement {
                         item_idx = 0; // Reset index when a new marker is clicked
                         this.fe_gMap.setZoom(20);
                         this.fe_gMap.setCenter(position);
-                        updateInfoWindow(marker_itemkey); // Initial call to display content and attach listeners
-                        if (infoWindow && this.fe_gMap && marker) {
-                            infoWindow.open(this.fe_gMap, marker);
-                        //    console.log("InfoWindow should be opening.");
-                        } else {
-                            console.error("InfoWindow.open() failed: infoWindow, map, or marker is null/undefined.");
-                            console.error("InfoWindow:", infoWindow, "Map:", this.fe_gMap, "Marker:", marker);
-                        }
+                        this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_TABLE_DATA"));
+                        // updateInfoWindow(marker_itemkey); // Initial call to display content and attach listeners
+                        // if (infoWindow && this.fe_gMap && marker) {
+                        //     infoWindow.open(this.fe_gMap, marker);
+                        // //    console.log("InfoWindow should be opening.");
+                        // } else {
+                        //     console.error("InfoWindow.open() failed: infoWindow, map, or marker is null/undefined.");
+                        //     console.error("InfoWindow:", infoWindow, "Map:", this.fe_gMap, "Marker:", marker);
+                        // }
                     });
                 }
             });
@@ -2185,7 +2324,7 @@ class CombinedMap extends HTMLElement {
     }
 
     async set_coordinate_table_data(SAC_COORDINATE_TABLE_DATA) {
-        SAC_COORDINATE_TABLE_DATA = sampledata;
+        SAC_COORDINATE_TABLE_DATA = tabledata;
         SAC_COORDINATE_TABLE_DATA.forEach(item => {
             const key = `${item.SQID?.id}_${item.SLATIT?.id}_${item.SLONGD?.id}_${item.SOKZ?.id}_${item.SDAWN?.id}_${item.SWERBETID?.id}_${item.SDESCRIPT?.id}_${item.SAU?.description}_${item.SWARENG3?.description}_${item.SPPSW?.id}_${item.STAGPR?.id}`;
            
@@ -2263,7 +2402,7 @@ class CombinedMap extends HTMLElement {
           }, Object.create(null));
           this.DB_COORDINATE_TABLE_DATA = DB_ROW_ALIGNMENT;
           this.DB_MEASURE_ALIGNMENT = Object.create(null);
-    
+          this.fe_generateTableContent(key,0);
     }
     
 
