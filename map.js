@@ -2422,7 +2422,11 @@ class CombinedMap extends HTMLElement {
           }, Object.create(null));
           this.DB_COORDINATE_TABLE_DATA = DB_ROW_ALIGNMENT;
           this.DB_MEASURE_ALIGNMENT = Object.create(null);
-          this.gMap_updateInfoWindow(this.gMap_present_marker.itemkey,0);
+          if (this.mapType === 'google') {
+              this.gMap_updateInfoWindow(this.gMap_present_marker.itemkey, 0);
+          } else if (this.mapType === 'osm') {
+             // this.osMap_updateInfoWindow(this.osMap_present_marker.itemkey, 0);
+          }
     }
 
 
