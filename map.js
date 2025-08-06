@@ -1748,6 +1748,8 @@ class CombinedMap extends HTMLElement {
         this.gMapLoaded = false;                       // check whether map is loaded from widget api key or by set api key method
         this.icons_id = null;
         this.icon_url_prefix = '';
+        this.gMap_present_marker = null; // Google Maps marker for the currently selected point.
+        this.osMap_present_marker = null; // Leaflet marker for the currently selected point.
         this.init();
     }
 
@@ -2153,12 +2155,13 @@ class CombinedMap extends HTMLElement {
                     this.fe_gMap_markers.push(marker);
                     marker.addListener('gmp-click', (event) => {  
                         debugger;
+                        this.gMap_present_marker.marker = marker; // Store the clicked marker
+                        this.gMap_present_marker.itemkey = itemkey; // Store the item key for the
                         if (infoWindow) {
                             infoWindow.close();
                         } else {
                             infoWindow = new google.maps.InfoWindow();
                         }
-                        const marker_itemkey = itemkey;
                         item_idx = 0; // Reset index when a new marker is clicked
                         this.fe_gMap.setZoom(20);
                         this.fe_gMap.setCenter(position);
@@ -2313,7 +2316,7 @@ class CombinedMap extends HTMLElement {
             SAC_COORDINATE_DATA = sampledata;
         }
         SAC_COORDINATE_DATA.forEach(item => {
-            const key = `${item.SQID?.id}_${item.SLATIT?.id}_${item.SLONGD?.id}_${item.SDESCRIPT?.id}_${item.SAU?.description}_${item.SWARENG3?.description}`;
+            const key = `${item.SQID?.id}_${item.SLATIT?.id}_${item.SLONGD?.id}`;
            
             if (this.DB_MARKER_DATA[key] === undefined) {
               this.DB_MARKER_DATA[key] = Object.create(null);
@@ -2418,7 +2421,7 @@ class CombinedMap extends HTMLElement {
           }, Object.create(null));
           this.DB_COORDINATE_TABLE_DATA = DB_ROW_ALIGNMENT;
           this.DB_MEASURE_ALIGNMENT = Object.create(null);
-          this.fe_generateTableContent(key,0);
+          this.fe_generateTableContent(this.gMap_present_marker.itemkey,0);
     }
     
 
