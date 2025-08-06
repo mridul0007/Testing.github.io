@@ -195,7 +195,7 @@ class CombinedMap extends HTMLElement {
         }
         
         this.icon_url_prefix = location.origin;
-        this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_COORDINATE_DATA"));
+        //this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_COORDINATE_DATA"));
         const mapTypeRadios = this.shadowRoot.querySelectorAll('input[name="rbg_mapType"]');
 
         //  Event Listener for the radio button
@@ -712,6 +712,7 @@ class CombinedMap extends HTMLElement {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(this.fe_osMap);
         this.fe_set_view_loadingScreen_overlay();
+        this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_COORDINATE_DATA"));
     }
 
     /** OSM dependency function end*/
