@@ -8,6 +8,20 @@
 
 (function () {
 
+    const loading_tableContent = `
+        <div style="
+            width: 500px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+        ">
+            Loading...
+        </div>
+        `;
+
     const tabledata = [
     {
         "@MeasureDimension": {
@@ -2147,15 +2161,16 @@ class CombinedMap extends HTMLElement {
                         item_idx = 0; // Reset index when a new marker is clicked
                         this.fe_gMap.setZoom(20);
                         this.fe_gMap.setCenter(position);
+                        infoWindow.setContent(loading_tableContent);
                         this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_TABLE_DATA"));
                         // updateInfoWindow(marker_itemkey); // Initial call to display content and attach listeners
-                        // if (infoWindow && this.fe_gMap && marker) {
-                        //     infoWindow.open(this.fe_gMap, marker);
-                        // //    console.log("InfoWindow should be opening.");
-                        // } else {
-                        //     console.error("InfoWindow.open() failed: infoWindow, map, or marker is null/undefined.");
-                        //     console.error("InfoWindow:", infoWindow, "Map:", this.fe_gMap, "Marker:", marker);
-                        // }
+                        if (infoWindow && this.fe_gMap && marker) {
+                            infoWindow.open(this.fe_gMap, marker);
+                        //    console.log("InfoWindow should be opening.");
+                        } else {
+                            console.error("InfoWindow.open() failed: infoWindow, map, or marker is null/undefined.");
+                            console.error("InfoWindow:", infoWindow, "Map:", this.fe_gMap, "Marker:", marker);
+                        }
                     });
                 }
             });
@@ -2410,7 +2425,7 @@ class CombinedMap extends HTMLElement {
 /** Below code represents the Table structure for the popup content. This can be edited based on requirement */
     // Table content generator
     fe_generateTableContent(itemkey,idx) {
-        let dataPoint = this.DB_COORDINATE_DATA[itemkey];
+        let dataPoint = this.DB_COORDINATE_TABLE_DATA[itemkey];
         let image_Url = image_url_prefix + dataPoint.items[0].SDAWN;
         const navButtons = dataPoint.items.length > 1
         ? 
