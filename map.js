@@ -2152,6 +2152,7 @@ class CombinedMap extends HTMLElement {
 
                     this.fe_gMap_markers.push(marker);
                     marker.addListener('gmp-click', (event) => {  
+                        debugger;
                         if (infoWindow) {
                             infoWindow.close();
                         } else {
