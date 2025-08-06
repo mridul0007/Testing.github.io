@@ -280,6 +280,1162 @@
             "description": "2220071339385",
             "properties": {}
         }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "AARDEFXFG5H44AW9I0Y5JLH89",
+            "description": "Netto 3",
+            "rawValue": "0",
+            "formattedValue": "0,00"
+        },
+        "SQID": {
+            "id": "0000000167306",
+            "description": "167306",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.9154735",
+            "description": "50.9154735",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "6.92177328",
+            "description": "6.92177328",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "00000000000",
+            "description": "Nicht zugeordnet",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "BERRENRATHER STR. 348 / KYLLBURGER STR.",
+            "description": "BERRENRATHER STR. 348 / KYLLBURGER STR.",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!PLAKATUNION",
+            "description": "Plakatunion",
+            "properties": {
+                "SAU.LONG_TEXT": "Plakatunion",
+                "SAU.ID": "6-"
+            }
+        },
+        "SWARENG3": {
+            "id": "",
+            "description": "Nicht zugeordnet",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Nicht zugeordnet"
+            }
+        },
+        "SPPSW": {
+            "id": "0000095271",
+            "description": "95271",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "48.9",
+            "description": "48.9",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "2220071329029",
+            "description": "2220071329029",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "1YI3PISYH11GEYJ46340IO3RO",
+            "description": "Brutto VM",
+            "rawValue": "0",
+            "formattedValue": "0,00"
+        },
+        "SQID": {
+            "id": "0000000167306",
+            "description": "167306",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.9154735",
+            "description": "50.9154735",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "6.92177328",
+            "description": "6.92177328",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "00000000000",
+            "description": "Nicht zugeordnet",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "BERRENRATHER STR. 348 / KYLLBURGER STR.",
+            "description": "BERRENRATHER STR. 348 / KYLLBURGER STR.",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!PLAKATUNION",
+            "description": "Plakatunion",
+            "properties": {
+                "SAU.LONG_TEXT": "Plakatunion",
+                "SAU.ID": "6-"
+            }
+        },
+        "SWARENG3": {
+            "id": "",
+            "description": "Nicht zugeordnet",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Nicht zugeordnet"
+            }
+        },
+        "SPPSW": {
+            "id": "0000095271",
+            "description": "95271",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "48.9",
+            "description": "48.9",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "2220071329029",
+            "description": "2220071329029",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "AARDEFXFG5H44AW9I0Y5JLH89",
+            "description": "Netto 3",
+            "rawValue": "0",
+            "formattedValue": "0,00"
+        },
+        "SQID": {
+            "id": "0000000167306",
+            "description": "167306",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.9154735",
+            "description": "50.9154735",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "6.92177328",
+            "description": "6.92177328",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "00000000000",
+            "description": "Nicht zugeordnet",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "BERRENRATHER STR. 348 / KYLLBURGER STR.",
+            "description": "BERRENRATHER STR. 348 / KYLLBURGER STR.",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!PLAKATUNION",
+            "description": "Plakatunion",
+            "properties": {
+                "SAU.LONG_TEXT": "Plakatunion",
+                "SAU.ID": "6-"
+            }
+        },
+        "SWARENG3": {
+            "id": "",
+            "description": "Nicht zugeordnet",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Nicht zugeordnet"
+            }
+        },
+        "SPPSW": {
+            "id": "0000095271",
+            "description": "95271",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "49.9",
+            "description": "49.9",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "2220071329029",
+            "description": "2220071329029",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "1YI3PISYH11GEYJ46340IO3RO",
+            "description": "Brutto VM",
+            "rawValue": "0",
+            "formattedValue": "0,00"
+        },
+        "SQID": {
+            "id": "0000000167306",
+            "description": "167306",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.9154735",
+            "description": "50.9154735",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "6.92177328",
+            "description": "6.92177328",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "00000000000",
+            "description": "Nicht zugeordnet",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "BERRENRATHER STR. 348 / KYLLBURGER STR.",
+            "description": "BERRENRATHER STR. 348 / KYLLBURGER STR.",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!PLAKATUNION",
+            "description": "Plakatunion",
+            "properties": {
+                "SAU.LONG_TEXT": "Plakatunion",
+                "SAU.ID": "6-"
+            }
+        },
+        "SWARENG3": {
+            "id": "",
+            "description": "Nicht zugeordnet",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Nicht zugeordnet"
+            }
+        },
+        "SPPSW": {
+            "id": "0000095271",
+            "description": "95271",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "49.9",
+            "description": "49.9",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "2220071329029",
+            "description": "2220071329029",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "AARDEFXFG5H44AYFXWM7G7I9T",
+            "description": "Auslastung 1 - bezahlte Auslastung",
+            "rawValue": "0.125",
+            "formattedValue": "12,50%"
+        },
+        "SQID": {
+            "id": "0000000176754",
+            "description": "176754",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.8812564912",
+            "description": "50.8812564912",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "7.0765568143",
+            "description": "7.0765568143",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "10039841200",
+            "description": "10039841200",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "MARIENBURGER STR. 1 (HIT EINF.SI.EGMONTSTR..)",
+            "description": "MARIENBURGER STR. 1 (HIT EINF.SI.EGMONTSTR..)",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!STROEERGRUPPE",
+            "description": "STROEERGRUPPE",
+            "properties": {
+                "SAU.LONG_TEXT": "STROEERGRUPPE",
+                "SAU.ID": "4-"
+            }
+        },
+        "SWARENG3": {
+            "id": "200",
+            "description": "Großfläche unbel.",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Großflächen"
+            }
+        },
+        "SPPSW": {
+            "id": "0000058823",
+            "description": "58823",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "32.2",
+            "description": "32.2",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "3680010256456",
+            "description": "3680010256456",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "AARDEFXFG5H44AYFXWM7G7UWX",
+            "description": "Auslastung 3 - Auslastung inkl. UML",
+            "rawValue": "0.5",
+            "formattedValue": "50,00%"
+        },
+        "SQID": {
+            "id": "0000000176754",
+            "description": "176754",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.8812564912",
+            "description": "50.8812564912",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "7.0765568143",
+            "description": "7.0765568143",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "10039841200",
+            "description": "10039841200",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "MARIENBURGER STR. 1 (HIT EINF.SI.EGMONTSTR..)",
+            "description": "MARIENBURGER STR. 1 (HIT EINF.SI.EGMONTSTR..)",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!STROEERGRUPPE",
+            "description": "STROEERGRUPPE",
+            "properties": {
+                "SAU.LONG_TEXT": "STROEERGRUPPE",
+                "SAU.ID": "4-"
+            }
+        },
+        "SWARENG3": {
+            "id": "200",
+            "description": "Großfläche unbel.",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Großflächen"
+            }
+        },
+        "SPPSW": {
+            "id": "0000058823",
+            "description": "58823",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "32.2",
+            "description": "32.2",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "3680010256456",
+            "description": "3680010256456",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "AARDEFXFG5H44AW9I0Y5JLH89",
+            "description": "Netto 3",
+            "rawValue": "1122.76",
+            "formattedValue": "1.122,76"
+        },
+        "SQID": {
+            "id": "0000000176754",
+            "description": "176754",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.8812564912",
+            "description": "50.8812564912",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "7.0765568143",
+            "description": "7.0765568143",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "10039841200",
+            "description": "10039841200",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "MARIENBURGER STR. 1 (HIT EINF.SI.EGMONTSTR..)",
+            "description": "MARIENBURGER STR. 1 (HIT EINF.SI.EGMONTSTR..)",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!STROEERGRUPPE",
+            "description": "STROEERGRUPPE",
+            "properties": {
+                "SAU.LONG_TEXT": "STROEERGRUPPE",
+                "SAU.ID": "4-"
+            }
+        },
+        "SWARENG3": {
+            "id": "200",
+            "description": "Großfläche unbel.",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Großflächen"
+            }
+        },
+        "SPPSW": {
+            "id": "0000058823",
+            "description": "58823",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "32.2",
+            "description": "32.2",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "3680010256456",
+            "description": "3680010256456",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "1YI3PISYH11GEYJ46340IO3RO",
+            "description": "Brutto VM",
+            "rawValue": "2228",
+            "formattedValue": "2.228,00"
+        },
+        "SQID": {
+            "id": "0000000176754",
+            "description": "176754",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.8812564912",
+            "description": "50.8812564912",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "7.0765568143",
+            "description": "7.0765568143",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "10039841200",
+            "description": "10039841200",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "MARIENBURGER STR. 1 (HIT EINF.SI.EGMONTSTR..)",
+            "description": "MARIENBURGER STR. 1 (HIT EINF.SI.EGMONTSTR..)",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!STROEERGRUPPE",
+            "description": "STROEERGRUPPE",
+            "properties": {
+                "SAU.LONG_TEXT": "STROEERGRUPPE",
+                "SAU.ID": "4-"
+            }
+        },
+        "SWARENG3": {
+            "id": "200",
+            "description": "Großfläche unbel.",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Großflächen"
+            }
+        },
+        "SPPSW": {
+            "id": "0000058823",
+            "description": "58823",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "32.2",
+            "description": "32.2",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "3680010256456",
+            "description": "3680010256456",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "AARDEFXFG5H44AYFXWM7G7I9T",
+            "description": "Auslastung 1 - bezahlte Auslastung",
+            "rawValue": "0.25",
+            "formattedValue": "25,00%"
+        },
+        "SQID": {
+            "id": "0000000176754",
+            "description": "176754",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.8812564912",
+            "description": "50.8812564912",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "7.0765568143",
+            "description": "7.0765568143",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "10039841200",
+            "description": "10039841200",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "MARIENBURGER STR. 1 (HIT EINF.SI.EGMONTSTR..)",
+            "description": "MARIENBURGER STR. 1 (HIT EINF.SI.EGMONTSTR..)",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!STROEERGRUPPE",
+            "description": "STROEERGRUPPE",
+            "properties": {
+                "SAU.LONG_TEXT": "STROEERGRUPPE",
+                "SAU.ID": "4-"
+            }
+        },
+        "SWARENG3": {
+            "id": "200",
+            "description": "Großfläche unbel.",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Großflächen"
+            }
+        },
+        "SPPSW": {
+            "id": "0000058823",
+            "description": "58823",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "33.2",
+            "description": "33.2",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "3680010256456",
+            "description": "3680010256456",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "AARDEFXFG5H44AYFXWM7G7UWX",
+            "description": "Auslastung 3 - Auslastung inkl. UML",
+            "rawValue": "0.25",
+            "formattedValue": "25,00%"
+        },
+        "SQID": {
+            "id": "0000000176754",
+            "description": "176754",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.8812564912",
+            "description": "50.8812564912",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "7.0765568143",
+            "description": "7.0765568143",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "10039841200",
+            "description": "10039841200",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "MARIENBURGER STR. 1 (HIT EINF.SI.EGMONTSTR..)",
+            "description": "MARIENBURGER STR. 1 (HIT EINF.SI.EGMONTSTR..)",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!STROEERGRUPPE",
+            "description": "STROEERGRUPPE",
+            "properties": {
+                "SAU.LONG_TEXT": "STROEERGRUPPE",
+                "SAU.ID": "4-"
+            }
+        },
+        "SWARENG3": {
+            "id": "200",
+            "description": "Großfläche unbel.",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Großflächen"
+            }
+        },
+        "SPPSW": {
+            "id": "0000058823",
+            "description": "58823",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "33.2",
+            "description": "33.2",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "3680010256456",
+            "description": "3680010256456",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "AARDEFXFG5H44AW9I0Y5JLH89",
+            "description": "Netto 3",
+            "rawValue": "1159.3",
+            "formattedValue": "1.159,30"
+        },
+        "SQID": {
+            "id": "0000000176754",
+            "description": "176754",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.8812564912",
+            "description": "50.8812564912",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "7.0765568143",
+            "description": "7.0765568143",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "10039841200",
+            "description": "10039841200",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "MARIENBURGER STR. 1 (HIT EINF.SI.EGMONTSTR..)",
+            "description": "MARIENBURGER STR. 1 (HIT EINF.SI.EGMONTSTR..)",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!STROEERGRUPPE",
+            "description": "STROEERGRUPPE",
+            "properties": {
+                "SAU.LONG_TEXT": "STROEERGRUPPE",
+                "SAU.ID": "4-"
+            }
+        },
+        "SWARENG3": {
+            "id": "200",
+            "description": "Großfläche unbel.",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Großflächen"
+            }
+        },
+        "SPPSW": {
+            "id": "0000058823",
+            "description": "58823",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "33.2",
+            "description": "33.2",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "3680010256456",
+            "description": "3680010256456",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "1YI3PISYH11GEYJ46340IO3RO",
+            "description": "Brutto VM",
+            "rawValue": "2089.4",
+            "formattedValue": "2.089,40"
+        },
+        "SQID": {
+            "id": "0000000176754",
+            "description": "176754",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.8812564912",
+            "description": "50.8812564912",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "7.0765568143",
+            "description": "7.0765568143",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "10039841200",
+            "description": "10039841200",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "MARIENBURGER STR. 1 (HIT EINF.SI.EGMONTSTR..)",
+            "description": "MARIENBURGER STR. 1 (HIT EINF.SI.EGMONTSTR..)",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!STROEERGRUPPE",
+            "description": "STROEERGRUPPE",
+            "properties": {
+                "SAU.LONG_TEXT": "STROEERGRUPPE",
+                "SAU.ID": "4-"
+            }
+        },
+        "SWARENG3": {
+            "id": "200",
+            "description": "Großfläche unbel.",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Großflächen"
+            }
+        },
+        "SPPSW": {
+            "id": "0000058823",
+            "description": "58823",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "33.2",
+            "description": "33.2",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "3680010256456",
+            "description": "3680010256456",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "AARDEFXFG5H44AYFXWM7G7I9T",
+            "description": "Auslastung 1 - bezahlte Auslastung",
+            "rawValue": "0.125",
+            "formattedValue": "12,50%"
+        },
+        "SQID": {
+            "id": "0000000176756",
+            "description": "176756",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.9226134626",
+            "description": "50.9226134626",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "6.851227507",
+            "description": "6.851227507",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "10053485800",
+            "description": "10053485800",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "MAX-PLANCK-STR. 9-11 (GLOBUS 1.B.EINF.)",
+            "description": "MAX-PLANCK-STR. 9-11 (GLOBUS 1.B.EINF.)",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!STROEERGRUPPE",
+            "description": "STROEERGRUPPE",
+            "properties": {
+                "SAU.LONG_TEXT": "STROEERGRUPPE",
+                "SAU.ID": "4-"
+            }
+        },
+        "SWARENG3": {
+            "id": "200",
+            "description": "Großfläche unbel.",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Großflächen"
+            }
+        },
+        "SPPSW": {
+            "id": "0000025409",
+            "description": "25409",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "19.9",
+            "description": "19.9",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "3680010256458",
+            "description": "3680010256458",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "AARDEFXFG5H44AYFXWM7G7UWX",
+            "description": "Auslastung 3 - Auslastung inkl. UML",
+            "rawValue": "0.1875",
+            "formattedValue": "18,75%"
+        },
+        "SQID": {
+            "id": "0000000176756",
+            "description": "176756",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.9226134626",
+            "description": "50.9226134626",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "6.851227507",
+            "description": "6.851227507",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "10053485800",
+            "description": "10053485800",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "MAX-PLANCK-STR. 9-11 (GLOBUS 1.B.EINF.)",
+            "description": "MAX-PLANCK-STR. 9-11 (GLOBUS 1.B.EINF.)",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!STROEERGRUPPE",
+            "description": "STROEERGRUPPE",
+            "properties": {
+                "SAU.LONG_TEXT": "STROEERGRUPPE",
+                "SAU.ID": "4-"
+            }
+        },
+        "SWARENG3": {
+            "id": "200",
+            "description": "Großfläche unbel.",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Großflächen"
+            }
+        },
+        "SPPSW": {
+            "id": "0000025409",
+            "description": "25409",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "19.9",
+            "description": "19.9",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "3680010256458",
+            "description": "3680010256458",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "AARDEFXFG5H44AW9I0Y5JLH89",
+            "description": "Netto 3",
+            "rawValue": "538.06",
+            "formattedValue": "538,06"
+        },
+        "SQID": {
+            "id": "0000000176756",
+            "description": "176756",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.9226134626",
+            "description": "50.9226134626",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "6.851227507",
+            "description": "6.851227507",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "10053485800",
+            "description": "10053485800",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "MAX-PLANCK-STR. 9-11 (GLOBUS 1.B.EINF.)",
+            "description": "MAX-PLANCK-STR. 9-11 (GLOBUS 1.B.EINF.)",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!STROEERGRUPPE",
+            "description": "STROEERGRUPPE",
+            "properties": {
+                "SAU.LONG_TEXT": "STROEERGRUPPE",
+                "SAU.ID": "4-"
+            }
+        },
+        "SWARENG3": {
+            "id": "200",
+            "description": "Großfläche unbel.",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Großflächen"
+            }
+        },
+        "SPPSW": {
+            "id": "0000025409",
+            "description": "25409",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "19.9",
+            "description": "19.9",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "3680010256458",
+            "description": "3680010256458",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "1YI3PISYH11GEYJ46340IO3RO",
+            "description": "Brutto VM",
+            "rawValue": "1839.08",
+            "formattedValue": "1.839,08"
+        },
+        "SQID": {
+            "id": "0000000176756",
+            "description": "176756",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.9226134626",
+            "description": "50.9226134626",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "6.851227507",
+            "description": "6.851227507",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "10053485800",
+            "description": "10053485800",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "MAX-PLANCK-STR. 9-11 (GLOBUS 1.B.EINF.)",
+            "description": "MAX-PLANCK-STR. 9-11 (GLOBUS 1.B.EINF.)",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!STROEERGRUPPE",
+            "description": "STROEERGRUPPE",
+            "properties": {
+                "SAU.LONG_TEXT": "STROEERGRUPPE",
+                "SAU.ID": "4-"
+            }
+        },
+        "SWARENG3": {
+            "id": "200",
+            "description": "Großfläche unbel.",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Großflächen"
+            }
+        },
+        "SPPSW": {
+            "id": "0000025409",
+            "description": "25409",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "19.9",
+            "description": "19.9",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "3680010256458",
+            "description": "3680010256458",
+            "properties": {}
+        }
+    },
+    {
+        "@MeasureDimension": {
+            "id": "AARDEFXFG5H44AYFXWM7G7UWX",
+            "description": "Auslastung 3 - Auslastung inkl. UML",
+            "rawValue": "0.03333333333333333",
+            "formattedValue": "3,33%"
+        },
+        "SQID": {
+            "id": "0000000176756",
+            "description": "176756",
+            "properties": {}
+        },
+        "SLATIT": {
+            "id": "50.9226134626",
+            "description": "50.9226134626",
+            "properties": {}
+        },
+        "SLONGD": {
+            "id": "6.851227507",
+            "description": "6.851227507",
+            "properties": {}
+        },
+        "SWERBETID": {
+            "id": "10053485800",
+            "description": "10053485800",
+            "properties": {}
+        },
+        "SOKZ": {
+            "id": "05315000",
+            "description": "Köln, Stadt",
+            "properties": {}
+        },
+        "SDESCRIPT": {
+            "id": "MAX-PLANCK-STR. 9-11 (GLOBUS 1.B.EINF.)",
+            "description": "MAX-PLANCK-STR. 9-11 (GLOBUS 1.B.EINF.)",
+            "properties": {}
+        },
+        "SAU": {
+            "id": "0HIER_NODE!STROEERGRUPPE",
+            "description": "STROEERGRUPPE",
+            "properties": {
+                "SAU.LONG_TEXT": "STROEERGRUPPE",
+                "SAU.ID": "4-"
+            }
+        },
+        "SWARENG3": {
+            "id": "200",
+            "description": "Großfläche unbel.",
+            "properties": {
+                "SWARENG3.LONG_TEXT": "Großflächen"
+            }
+        },
+        "SPPSW": {
+            "id": "0000025409",
+            "description": "25409",
+            "properties": {}
+        },
+        "STAGPR": {
+            "id": "20.3",
+            "description": "20.3",
+            "properties": {}
+        },
+        "SDAWN": {
+            "id": "3680010256458",
+            "description": "3680010256458",
+            "properties": {}
+        }
     }]
 
     // Constants for loading Leaflet CSS and JavaScript libraries.
