@@ -1751,6 +1751,7 @@ class CombinedMap extends HTMLElement {
         this.icon_url_prefix = '';
         this.present_marker = ''; // Google Maps marker for the currently selected point.
         this.infoWindow = null;
+        this.table_filter_key
         this.init();
     }
 

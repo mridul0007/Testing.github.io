@@ -7,7 +7,7 @@
 	"vendor": "Contigo Consulting AG - MKoshy, JBuergmayr",
 	"license": "",
 	"id": "MAPS_TEST_NEW",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"icon": "",
 	"webcomponents": [
 		{
@@ -105,11 +105,7 @@
 			]
 		},
 		"get_table_filter_key": {
-			"description": "get table filter key",
-			"returns": {
-				"type": "string[]",
-				"description": "table filter key"
-			}
+			 "returnType": "string[]"
 		}
 
 	},
