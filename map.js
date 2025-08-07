@@ -1738,6 +1738,7 @@ class CombinedMap extends HTMLElement {
         this.DB_MEASURE_ALIGNMENT = Object.create(null); // Object to store all dimensions aligned measures.
         this.DB_MARKER_DATA = Object.create(null);// Object to store on all marker points.
         this.DB_COORDINATE_DATA = Object.create(null);  // Array to store coordinate data.
+        this.DB_COORDINATE_TABLE_DATA = Object.create(null);  // Array to store marker coordinate table data.
         this.fe_gMap_markers = [];                      // Array to store Google Maps markers.
         this.fe_osMap_markers = [];                     // Array to store Leaflet markers.
         this.mapType = 'google';                       // assigning  Current map type (google or osm) based on the toggle button. default checked google.
