@@ -2279,6 +2279,7 @@ class CombinedMap extends HTMLElement {
             this.fe_set_view_loadingScreen_overlay();
              this.shadowRoot.querySelector("#loading-text").textContent = `Inserting ${Object.keys(this.DB_MARKER_DATA).length} datapoints into ${this.mapType} maps...`;
             this.DB_MARKER_DATA = Object.create(null);
+            this.DB_COORDINATE_TABLE_DATA = Object.create(null);
             SAC_COORDINATE_DATA = sampledata;
         }
         SAC_COORDINATE_DATA.forEach(item => {
@@ -2385,7 +2386,7 @@ class CombinedMap extends HTMLElement {
                   DB_ROW_ALIGNMENT[key].items.push(item); // Add item to existing key
                 }
           }, Object.create(null));
-          this.DB_COORDINATE_TABLE_DATA = DB_ROW_ALIGNMENT;
+          this.DB_COORDINATE_TABLE_DATA.push(DB_ROW_ALIGNMENT);
           this.DB_MEASURE_ALIGNMENT = Object.create(null);
           if (this.mapType === 'google') {
               this.gMap_updateInfoWindow(this.gMap_present_marker, 0);
