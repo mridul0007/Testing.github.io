@@ -1751,6 +1751,7 @@ class CombinedMap extends HTMLElement {
         this.icon_url_prefix = '';
         this.present_marker = ''; // Google Maps marker for the currently selected point.
         this.infoWindow = null;
+        this.popup = null;
         this.table_filter_key = [];
         this.init();
     }
@@ -1898,22 +1899,6 @@ class CombinedMap extends HTMLElement {
             const mapInstance = this.fe_osMap;
             let item_idx = 0; // Keep in outer scope
 
-            // local function to update the popup Content. 
-            const updatePopupContent = (marker_itemkey) => {
-                const marker_dataPoint = this.DB_COORDINATE_DATA[marker_itemkey];
-                const cur_lat = parseFloat(marker_dataPoint.SLATIT);
-                const cur_lng = parseFloat(marker_dataPoint.SLONGD);
-                const tableContent = this.fe_generateTableContent(marker_itemkey, item_idx);
-                const content = `<div style="max-width: none;">${tableContent}</div>`;
-
-                const popup = L.popup({
-                    content: content,
-                    maxWidth: "auto"
-                }).setLatLng([cur_lat, cur_lng])
-                popup.itemkey = marker_itemkey;
-                popup.openOn(this.fe_osMap);
-            };
-
             // Loop over data points
             Object.keys(this.DB_COORDINATE_DATA).forEach(itemkey => {
                 const dataPoint = this.DB_COORDINATE_DATA[itemkey];
@@ -1945,9 +1930,21 @@ class CombinedMap extends HTMLElement {
                 marker.on('click', (e) => {
                     const marker_itemkey = itemkey;
                     item_idx = 0;
-                     this.infoWindow.setContent(loading_tableContent);
-                    mapInstance.setView(e.latlng, 20);
-                    updatePopupContent(marker_itemkey);
+                    this.popup = L.popup({
+                        maxWidth: "auto",
+                        content: loading_tableContent
+                    }).setLatLng([lat_m, lng_m]);
+                     if( this.DB_COORDINATE_TABLE_DATA[itemkey] === undefined )
+                        {   
+                            this.table_filter_key = [];
+                            this.table_filter_key[0] = this.DB_COORDINATE_DATA[itemkey].QID;
+                            this.table_filter_key[1] = this.DB_COORDINATE_DATA[itemkey].SLATIT;
+                            this.table_filter_key[2] = this.DB_COORDINATE_DATA[itemkey].SLONGD;
+                            this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_TABLE_DATA"));
+                        }
+                        else{
+                          this.updatePopupContent(marker_itemkey, item_idx);
+                        }                        
                 });
 
                 markerCluster.addLayer(marker);
@@ -2011,6 +2008,17 @@ class CombinedMap extends HTMLElement {
         }
     });
 }
+
+
+    updatePopupContent(marker_itemkey,item_idx){
+        const marker_dataPoint = this.DB_COORDINATE_DATA[marker_itemkey];
+        const cur_lat = parseFloat(marker_dataPoint.SLATIT);
+        const cur_lng = parseFloat(marker_dataPoint.SLONGD);
+        const tableContent = this.fe_generateTableContent(marker_itemkey, item_idx);
+        const content = `<div style="max-width: none;">${tableContent}</div>`;
+        this.popup.setContent(content);
+        this.popup.itemkey = marker_itemkey; // Store the item key for the clicked marker
+    };
 
 
     /** Initializes the Google Maps instance by loading the Google Maps API and Marker Clusterer library. */
@@ -2179,6 +2187,43 @@ class CombinedMap extends HTMLElement {
     });
 }
 
+gMap_updateInfoWindow(marker_itemkey,item_idx) {
+            let tableContent = this.fe_generateTableContent(marker_itemkey, item_idx);
+            this.infoWindow.setContent(tableContent);
+            google.maps.event.addListenerOnce(this.infoWindow, 'domready', () => {
+                // console.log("reached domready");
+                setTimeout(() => {
+                const navContainer = this.shadowRoot.querySelector(`#${this.mapType}-nav-buttons`);
+                    if (navContainer) {
+                const itemCounter =  navContainer.querySelector("#itemCounter");
+                const nextBtn =  navContainer.querySelector("#nextItem"); 
+                const prevBtn =  navContainer.querySelector("#prevItem");
+                if (nextBtn) {
+                    //  console.log("DEBUG: 'nextItem' button found.");
+                    nextBtn.addEventListener("click", () => {
+                        //   console.log("Next button clicked");
+                        if (item_idx < this.DB_COORDINATE_DATA[marker_itemkey].items.length - 1) {
+                            item_idx++;
+                            itemCounter.textContent = `${item_idx + 1} / ${this.DB_COORDINATE_DATA[marker_itemkey].items.length}`;
+                            updateInfoWindow(marker_itemkey); // Call helper to update content and re-attach
+                        }
+                    });
+                }
+                if (prevBtn) {
+                    //  console.log("DEBUG: 'prev' button found.");
+                    prevBtn.addEventListener("click", () => {
+                        //   console.log("Previous button clicked");
+                        if (item_idx > 0) {
+                            item_idx--;
+                            itemCounter.textContent = `${item_idx + 1} / ${this.DB_COORDINATE_DATA[marker_itemkey].items.length}`;
+                            updateInfoWindow(marker_itemkey); // Call helper to update content and re-attach
+                        }
+                    });
+                }
+                    }
+            },50);
+            });
+        };
 
     /** Sets the Google Maps JavaScript API key and initializes the Google Maps instance. */
     async set_google_mapsjs_api_key(api_key) {
@@ -2404,46 +2449,6 @@ class CombinedMap extends HTMLElement {
           }
     }
 
-
-
-    gMap_updateInfoWindow(marker_itemkey,item_idx) {
-            let tableContent = this.fe_generateTableContent(marker_itemkey, item_idx);
-            this.infoWindow.setContent(tableContent);
-            google.maps.event.addListenerOnce(this.infoWindow, 'domready', () => {
-                // console.log("reached domready");
-                setTimeout(() => {
-                const navContainer = this.shadowRoot.querySelector(`#${this.mapType}-nav-buttons`);
-                    if (navContainer) {
-                const itemCounter =  navContainer.querySelector("#itemCounter");
-                const nextBtn =  navContainer.querySelector("#nextItem"); 
-                const prevBtn =  navContainer.querySelector("#prevItem");
-                if (nextBtn) {
-                    //  console.log("DEBUG: 'nextItem' button found.");
-                    nextBtn.addEventListener("click", () => {
-                        //   console.log("Next button clicked");
-                        if (item_idx < this.DB_COORDINATE_DATA[marker_itemkey].items.length - 1) {
-                            item_idx++;
-                            itemCounter.textContent = `${item_idx + 1} / ${this.DB_COORDINATE_DATA[marker_itemkey].items.length}`;
-                            updateInfoWindow(marker_itemkey); // Call helper to update content and re-attach
-                        }
-                    });
-                }
-                if (prevBtn) {
-                    //  console.log("DEBUG: 'prev' button found.");
-                    prevBtn.addEventListener("click", () => {
-                        //   console.log("Previous button clicked");
-                        if (item_idx > 0) {
-                            item_idx--;
-                            itemCounter.textContent = `${item_idx + 1} / ${this.DB_COORDINATE_DATA[marker_itemkey].items.length}`;
-                            updateInfoWindow(marker_itemkey); // Call helper to update content and re-attach
-                        }
-                    });
-                }
-                    }
-            },50);
-            });
-        };
-    
 
 
 /** Below code represents the Table structure for the popup content. This can be edited based on requirement */
