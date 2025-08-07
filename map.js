@@ -2077,46 +2077,6 @@ class CombinedMap extends HTMLElement {
             google.maps.event.trigger(this.fe_gMap, 'resize');
             let item_idx = 0; // Initialize item_idx for each marker
 
-            // //Local fucntion to update the popup contents 
-            //  const updateInfoWindow = (marker_itemkey) => {
-            //             let tableContent = this.fe_generateTableContent(marker_itemkey, item_idx);
-            //             infoWindow.setContent(tableContent);
-            //             google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
-            //                // console.log("reached domready");
-            //                 setTimeout(() => {
-            //                 const navContainer = this.shadowRoot.querySelector(`#${this.mapType}-nav-buttons`);
-            //                     if (navContainer) {
-            //                 const itemCounter =  navContainer.querySelector("#itemCounter");
-            //                 const nextBtn =  navContainer.querySelector("#nextItem"); 
-            //                 const prevBtn =  navContainer.querySelector("#prevItem");
-            //                 if (nextBtn) {
-            //                   //  console.log("DEBUG: 'nextItem' button found.");
-            //                     nextBtn.addEventListener("click", () => {
-            //                      //   console.log("Next button clicked");
-            //                         if (item_idx < this.DB_COORDINATE_DATA[marker_itemkey].items.length - 1) {
-            //                             item_idx++;
-            //                             itemCounter.textContent = `${item_idx + 1} / ${this.DB_COORDINATE_DATA[marker_itemkey].items.length}`;
-            //                             updateInfoWindow(marker_itemkey); // Call helper to update content and re-attach
-            //                         }
-            //                     });
-            //                 }
-            //                 if (prevBtn) {
-            //                   //  console.log("DEBUG: 'prev' button found.");
-            //                     prevBtn.addEventListener("click", () => {
-            //                      //   console.log("Previous button clicked");
-            //                         if (item_idx > 0) {
-            //                             item_idx--;
-            //                             itemCounter.textContent = `${item_idx + 1} / ${this.DB_COORDINATE_DATA[marker_itemkey].items.length}`;
-            //                             updateInfoWindow(marker_itemkey); // Call helper to update content and re-attach
-            //                         }
-            //                     });
-            //                 }
-            //                     }
-            //             },50);
-            //             });
-            //         };
-
-
             Object.keys(this.DB_COORDINATE_DATA).forEach(itemkey => {
                 let dataPoint = this.DB_COORDINATE_DATA[itemkey];
                 const markerImg = document.createElement("img");
@@ -2165,7 +2125,13 @@ class CombinedMap extends HTMLElement {
                         this.fe_gMap.setZoom(20);
                         this.fe_gMap.setCenter(position);
                         this.infoWindow.setContent(loading_tableContent);
-                        this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_TABLE_DATA"));
+                        if( this.DB_COORDINATE_TABLE_DATA[itemkey] === undefined )
+                        {
+                            this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_TABLE_DATA"));
+                        }
+                        else{
+                            this.gMap_updateInfoWindow(itemkey,item_idx);
+                        }                        
                         // updateInfoWindow(marker_itemkey); // Initial call to display content and attach listeners
                         if (this.infoWindow && this.fe_gMap && marker) {
                             this.infoWindow.open(this.fe_gMap, marker);
