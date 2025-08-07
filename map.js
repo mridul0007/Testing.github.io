@@ -1920,7 +1920,7 @@ class CombinedMap extends HTMLElement {
                 const lat_m = parseFloat(dataPoint.SLATIT);
                 const lng_m = parseFloat(dataPoint.SLONGD);
                 let cleaned_sau_value = "";
-                const parts = dataPoint.items[0].SAUID.split('!');
+                const parts = dataPoint.SAUID.split('!');
                 if (parts.length > 1) {
                     cleaned_sau_value = parts[parts.length - 1]; 
                 } else {
@@ -1939,12 +1939,13 @@ class CombinedMap extends HTMLElement {
 
                 const marker = L.marker([lat_m, lng_m], {
                     icon: setIcon,
-                    title: dataPoint.items[0].SDESCRIPT
+                    title: dataPoint.SDESCRIPT
                 });
 
                 marker.on('click', (e) => {
                     const marker_itemkey = itemkey;
                     item_idx = 0;
+                     this.infoWindow.setContent(loading_tableContent);
                     mapInstance.setView(e.latlng, 20);
                     updatePopupContent(marker_itemkey);
                 });
@@ -2167,8 +2168,8 @@ class CombinedMap extends HTMLElement {
                 resolve();
             }
             this.fe_gMap.addListener('click', () => {
-                if (infoWindow) {
-                    infoWindow.close();
+                if (this.infoWindow) {
+                    this.infoWindow.close();
                     // No need to reset item_idx here, as it's handled per marker click
                 }
             });
