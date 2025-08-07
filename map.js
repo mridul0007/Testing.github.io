@@ -2129,7 +2129,7 @@ class CombinedMap extends HTMLElement {
                         if( this.DB_COORDINATE_TABLE_DATA[itemkey] === undefined )
                         {   
                             this.table_filter_key = [];
-                            this.table_filter_key[0] = this.DB_COORDINATE_DATA[itemkey].QID;
+                            this.table_filter_key[0] = this.DB_COORDINATE_DATA[itemkey].SQID;
                             this.table_filter_key[1] = this.DB_COORDINATE_DATA[itemkey].SLATIT;
                             this.table_filter_key[2] = this.DB_COORDINATE_DATA[itemkey].SLONGD;
                             this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_TABLE_DATA"));
