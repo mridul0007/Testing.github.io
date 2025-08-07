@@ -1751,7 +1751,7 @@ class CombinedMap extends HTMLElement {
         this.icon_url_prefix = '';
         this.present_marker = ''; // Google Maps marker for the currently selected point.
         this.infoWindow = null;
-        this.table_filter_key
+        this.table_filter_key = [];
         this.init();
     }
 
@@ -2127,7 +2127,8 @@ class CombinedMap extends HTMLElement {
                         this.fe_gMap.setCenter(position);
                         this.infoWindow.setContent(loading_tableContent);
                         if( this.DB_COORDINATE_TABLE_DATA[itemkey] === undefined )
-                        {
+                        {   
+                            this.table_filter_key = [];
                             this.table_filter_key[0] = this.DB_COORDINATE_DATA[itemkey].QID;
                             this.table_filter_key[1] = this.DB_COORDINATE_DATA[itemkey].SLATIT;
                             this.table_filter_key[2] = this.DB_COORDINATE_DATA[itemkey].SLONGD;
