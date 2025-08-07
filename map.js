@@ -2370,11 +2370,12 @@ class CombinedMap extends HTMLElement {
         }, Object.create(null));
 
         
-
+          var table_data_key = '';  
           const DB_ROW_ALIGNMENT = Object.create(null);
           Object.keys(this.DB_MEASURE_ALIGNMENT).forEach( itemkey => {
                 const item = this.DB_MEASURE_ALIGNMENT[itemkey];
                 const key = `${item.SQID}_${item.SLATIT}_${item.SLONGD}`;
+                table_data_key = key
                 if (DB_ROW_ALIGNMENT[key] === undefined) {
                   DB_ROW_ALIGNMENT[key] = Object.create(null);
                   DB_ROW_ALIGNMENT[key].SQID = item.SQID;
@@ -2386,7 +2387,7 @@ class CombinedMap extends HTMLElement {
                   DB_ROW_ALIGNMENT[key].items.push(item); // Add item to existing key
                 }
           }, Object.create(null));
-          this.DB_COORDINATE_TABLE_DATA[key] = DB_ROW_ALIGNMENT[key];
+          this.DB_COORDINATE_TABLE_DATA[table_data_key] = DB_ROW_ALIGNMENT[table_data_key];
           this.DB_MEASURE_ALIGNMENT = Object.create(null);
           if (this.mapType === 'google') {
               this.gMap_updateInfoWindow(this.gMap_present_marker, 0);
