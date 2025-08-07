@@ -2386,7 +2386,7 @@ class CombinedMap extends HTMLElement {
                   DB_ROW_ALIGNMENT[key].items.push(item); // Add item to existing key
                 }
           }, Object.create(null));
-          this.DB_COORDINATE_TABLE_DATA.push(DB_ROW_ALIGNMENT);
+          this.DB_COORDINATE_TABLE_DATA[key] = DB_ROW_ALIGNMENT[key];
           this.DB_MEASURE_ALIGNMENT = Object.create(null);
           if (this.mapType === 'google') {
               this.gMap_updateInfoWindow(this.gMap_present_marker, 0);
