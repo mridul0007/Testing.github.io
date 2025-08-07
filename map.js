@@ -1934,8 +1934,9 @@ class CombinedMap extends HTMLElement {
                         maxWidth: "auto",
                         content: loading_tableContent
                     }).setLatLng([lat_m, lng_m]);
-                     if( this.DB_COORDINATE_TABLE_DATA[itemkey] === undefined )
-                        {   
+                    this.popup.openOn(this.fe_osMap);
+                    if( this.DB_COORDINATE_TABLE_DATA[itemkey] === undefined )
+                        {
                             this.table_filter_key = [];
                             this.table_filter_key[0] = this.DB_COORDINATE_DATA[itemkey].QID;
                             this.table_filter_key[1] = this.DB_COORDINATE_DATA[itemkey].SLATIT;
@@ -2012,8 +2013,6 @@ class CombinedMap extends HTMLElement {
 
     updatePopupContent(marker_itemkey,item_idx){
         const marker_dataPoint = this.DB_COORDINATE_DATA[marker_itemkey];
-        const cur_lat = parseFloat(marker_dataPoint.SLATIT);
-        const cur_lng = parseFloat(marker_dataPoint.SLONGD);
         const tableContent = this.fe_generateTableContent(marker_itemkey, item_idx);
         const content = `<div style="max-width: none;">${tableContent}</div>`;
         this.popup.setContent(content);
