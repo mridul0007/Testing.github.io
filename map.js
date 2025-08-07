@@ -2445,7 +2445,7 @@ gMap_updateInfoWindow(marker_itemkey,item_idx) {
           if (this.mapType === 'google') {
               this.gMap_updateInfoWindow(this.present_marker, 0);
           } else if (this.mapType === 'osm') {
-             // this.osMap_updateInfoWindow(this.osMap_present_marker.itemkey, 0);
+            this.updatePopupContent(this.present_marker, 0);
           }
     }
 
