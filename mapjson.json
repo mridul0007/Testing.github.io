@@ -39,7 +39,10 @@
 		},
 		"icons_id":{
 			"type": "Selection"
-		}	
+		},
+		"table_filter_key": {
+			"type": "string[]"
+		}
 	},
 	"methods": {
 		"set_google_mapsjs_api_key": {
@@ -100,6 +103,13 @@
 					"description": "icons ids"
 				}
 			]
+		},
+		"get_table_filter_key": {
+			"description": "get table filter key",
+			"returns": {
+				"type": "string[]",
+				"description": "table filter key"
+			}
 		}
 
 	},

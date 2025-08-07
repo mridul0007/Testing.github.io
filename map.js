@@ -1749,8 +1749,7 @@ class CombinedMap extends HTMLElement {
         this.gMapLoaded = false;                       // check whether map is loaded from widget api key or by set api key method
         this.icons_id = null;
         this.icon_url_prefix = '';
-        this.gMap_present_marker = ''; // Google Maps marker for the currently selected point.
-        this.osMap_present_marker = ''; // Leaflet marker for the currently selected point.
+        this.present_marker = ''; // Google Maps marker for the currently selected point.
         this.infoWindow = null;
         this.init();
     }
@@ -2121,13 +2120,16 @@ class CombinedMap extends HTMLElement {
                         } else {
                             this.infoWindow = new google.maps.InfoWindow();
                         }
-                        this.gMap_present_marker = itemkey; // Store the item key for the clicked marker
+                        this.present_marker = itemkey; // Store the item key for the clicked marker
                         item_idx = 0; // Reset index when a new marker is clicked
                         this.fe_gMap.setZoom(20);
                         this.fe_gMap.setCenter(position);
                         this.infoWindow.setContent(loading_tableContent);
                         if( this.DB_COORDINATE_TABLE_DATA[itemkey] === undefined )
                         {
+                            this.table_filter_key[0] = this.DB_COORDINATE_DATA[itemkey].QID;
+                            this.table_filter_key[1] = this.DB_COORDINATE_DATA[itemkey].SLATIT;
+                            this.table_filter_key[2] = this.DB_COORDINATE_DATA[itemkey].SLONGD;
                             this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_TABLE_DATA"));
                         }
                         else{
@@ -2212,7 +2214,10 @@ class CombinedMap extends HTMLElement {
             //console.log("recieved icon IDs", icons_id);
     }
 
-    
+     async get_table_filter_key(){     
+            console.log("reached", this.table_filter_key);
+            return this.table_filter_key;      
+    }
 
     /** OSM dependency function start*/
     /** following five functions load the dependencies for OSM */
@@ -2390,7 +2395,7 @@ class CombinedMap extends HTMLElement {
           this.DB_COORDINATE_TABLE_DATA[table_data_key] = DB_ROW_ALIGNMENT[table_data_key];
           this.DB_MEASURE_ALIGNMENT = Object.create(null);
           if (this.mapType === 'google') {
-              this.gMap_updateInfoWindow(this.gMap_present_marker, 0);
+              this.gMap_updateInfoWindow(this.present_marker, 0);
           } else if (this.mapType === 'osm') {
              // this.osMap_updateInfoWindow(this.osMap_present_marker.itemkey, 0);
           }
