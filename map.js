@@ -2361,7 +2361,7 @@ gMap_updateInfoWindow(marker_itemkey,item_idx) {
         }
     }
 
-    async set_coordinate_master_table_data(SAC_COORDINATE_TABLE_DATA) {
+    async set_marker_master_data(SAC_COORDINATE_TABLE_DATA) {
         SAC_COORDINATE_TABLE_DATA = tabledata;
         SAC_COORDINATE_TABLE_DATA.forEach(item => {
             const key = `${item.SQID?.id}_${item.SLATIT?.id}_${item.SLONGD?.id}_${item.SOKZ?.id}_${item.SDAWN?.id}_${item.SWERBETID?.id}_${item.SDESCRIPT?.id}_${item.SAU?.description}_${item.SWARENG3?.description}_${item.SPPSW?.id}_${item.STAGPR?.id}`;
