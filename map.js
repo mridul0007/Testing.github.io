@@ -1752,7 +1752,7 @@ class CombinedMap extends HTMLElement {
         this.present_marker = ''; // Google Maps marker for the currently selected point.
         this.infoWindow = null;
         this.popup = null;
-        this.table_filter_key = [];
+        this.marker_filter_key = [];
         this.init();
     }
 
@@ -1937,11 +1937,11 @@ class CombinedMap extends HTMLElement {
                     this.popup.openOn(this.fe_osMap);
                     if( this.DB_COORDINATE_TABLE_DATA[itemkey] === undefined )
                         {
-                            this.table_filter_key = [];
-                            this.table_filter_key[0] = this.DB_COORDINATE_DATA[itemkey].QID;
-                            this.table_filter_key[1] = this.DB_COORDINATE_DATA[itemkey].SLATIT;
-                            this.table_filter_key[2] = this.DB_COORDINATE_DATA[itemkey].SLONGD;
-                            this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_TABLE_DATA"));
+                            this.marker_filter_key = {};
+                            this.marker_filter_key.SQID = this.DB_COORDINATE_DATA[itemkey].SQID;
+                            this.marker_filter_key.SLATIT = this.DB_COORDINATE_DATA[itemkey].SLATIT;
+                            this.marker_filter_key.SLONGD = this.DB_COORDINATE_DATA[itemkey].SLONGD;
+                            this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_MARKER_DATA"));
                         }
                         else{
                           this.updatePopupContent(marker_itemkey, item_idx);
@@ -2136,11 +2136,11 @@ class CombinedMap extends HTMLElement {
                         this.infoWindow.setContent(loading_tableContent);
                         if( this.DB_COORDINATE_TABLE_DATA[itemkey] === undefined )
                         {   
-                            this.table_filter_key = [];
-                            this.table_filter_key[0] = this.DB_COORDINATE_DATA[itemkey].SQID;
-                            this.table_filter_key[1] = this.DB_COORDINATE_DATA[itemkey].SLATIT;
-                            this.table_filter_key[2] = this.DB_COORDINATE_DATA[itemkey].SLONGD;
-                            this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_TABLE_DATA"));
+                            this.marker_filter_key = {};
+                            this.marker_filter_key.SQID = this.DB_COORDINATE_DATA[itemkey].SQID;
+                            this.marker_filter_key.SLATIT = this.DB_COORDINATE_DATA[itemkey].SLATIT;
+                            this.marker_filter_key.SLONGD = this.DB_COORDINATE_DATA[itemkey].SLONGD;
+                            this.dispatchEvent(new CustomEvent("EVENTW2S_DB_FILL_MARKER_DATA"));
                         }
                         else{
                             this.gMap_updateInfoWindow(itemkey,item_idx);
@@ -2261,9 +2261,9 @@ gMap_updateInfoWindow(marker_itemkey,item_idx) {
             //console.log("recieved icon IDs", icons_id);
     }
 
-     async get_table_filter_key(){     
-            console.log("reached", this.table_filter_key);
-            return this.table_filter_key;      
+     async get_marker_filter_key(){     
+            console.log("reached", this.marker_filter_key);
+            return this.marker_filter_key;      
     }
 
     /** OSM dependency function start*/
@@ -2338,7 +2338,7 @@ gMap_updateInfoWindow(marker_itemkey,item_idx) {
             const key = `${item.SQID?.id}_${item.SLATIT?.id}_${item.SLONGD?.id}`;
            
             if (this.DB_MARKER_DATA[key] === undefined) {
-              this.DB_MARKER_DATA[key] = Object.create(null);
+                this.DB_MARKER_DATA[key] = Object.create(null);
                 this.DB_MARKER_DATA[key].SQID = item.SQID?.id;
                 this.DB_MARKER_DATA[key].SLATIT = item.SLATIT?.id;
                 this.DB_MARKER_DATA[key].SLONGD = item.SLONGD?.id;

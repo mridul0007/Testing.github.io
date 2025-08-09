@@ -40,8 +40,8 @@
 		"icons_id":{
 			"type": "Selection"
 		},
-		"table_filter_key": {
-			"type": "string[]"
+		"marker_filter_key": {
+			"type": "Selection"
 		}
 	},
 	"methods": {
@@ -84,13 +84,13 @@
 				}
 			]
 		},
-		"set_coordinate_master_table_data":{
-			"description": "set coordinate master table data",
+		"set_marker_master_data":{
+			"description": "set marker master data",
 			"parameters": [
 				{
-					"name": "coordinate_master_table_data",
+					"name": "marker_filter_key",
 					"type": "ResultSet[]",
-					"description": "coordinate master table data"
+					"description": "marker master data"
 				}
 			]
 		},
@@ -104,8 +104,8 @@
 				}
 			]
 		},
-		"get_table_filter_key": {
-			 "returnType": "string[]"
+		"get_marker_filter_key": {
+			 "returnType": "Selection"
 		}
 
 	},
@@ -113,8 +113,8 @@
 		"EVENTW2S_DB_FILL_COORDINATE_DATA": {
 			"description": "read coordinate master data"
 		},
-		"EVENTW2S_DB_FILL_TABLE_DATA": {
-			"description": "read table data"
+		"EVENTW2S_DB_FILL_MARKER_DATA": {
+			"description": "read marker data"
 		}
 	}
 	
